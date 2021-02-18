@@ -1,0 +1,13 @@
+.button {
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.button:hover {
+  opacity: .6;
+}

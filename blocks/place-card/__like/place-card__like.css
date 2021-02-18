@@ -1,0 +1,20 @@
+.place-card__like {
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-image: url('../../../images/like.png');
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.place-card__like:active{
+  background-image: url('../../../images/like_active.png');
+}
+
+.place-card__like:hover {
+  opacity: .5;
+}

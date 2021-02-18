@@ -1,0 +1,67 @@
+/* normalize */
+
+@import url(../vendor/normalize.css);
+
+/* fonts */
+
+@import url(../vendor/fonts/fonts.css);
+
+/* root */
+
+@import url(../blocks/root/root.css);
+
+/* page */
+
+@import url(../blocks/page/page.css);
+
+/* header */
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+
+/* content */
+
+@import url(../blocks/content/content.css);
+
+/* profile */
+
+@import url(../blocks/profile/profile.css);
+
+/* user */
+
+@import url(../blocks/user/user.css);
+@import url(../blocks/user/__wrapper/user__wrapper.css);
+@import url(../blocks/user/__avatar/user__avatar.css);
+@import url(../blocks/user/__text/user__text.css);
+@import url(../blocks/user/__name/user__name.css);
+@import url(../blocks/user/__vocation/user__vocation.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/user/__edit/user__edit.css);
+@import url(../blocks/user/__add/user__add.css);
+
+/* places */
+
+@import url(../blocks/places/places.css);
+
+/* place-card */
+
+@import url(../blocks/place-card/place-card.css);
+@import url(../blocks/place-card/__image/place-card__image.css);
+@import url(../blocks/place-card/__wrapper/place-card__wrapper.css);
+@import url(../blocks/place-card/__name/place-card__name.css);
+@import url(../blocks/place-card/__like/place-card__like.css);
+
+/* footer */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+/*
+
+@import url(..);
+@import url(..);
+@import url(..);
+@import url(..);
+@import url(..);
+
+*/

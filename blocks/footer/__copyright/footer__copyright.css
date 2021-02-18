@@ -1,0 +1,11 @@
+.footer__copyright {
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+}
+
+.footer__copyright:hover {
+  opacity: .6;
+}

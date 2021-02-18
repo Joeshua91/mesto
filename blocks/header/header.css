@@ -1,0 +1,5 @@
+.header {
+  display: flex;
+  margin-top: 45px;
+  border-bottom: 1px solid #545454;
+}

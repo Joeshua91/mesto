@@ -1,0 +1,7 @@
+.place-card__wrapper {
+  width: 246px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
