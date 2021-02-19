@@ -6,3 +6,10 @@
   background-size: cover;
   border-radius: 50%;
 }
+
+@media (max-width: 525px) {
+  .user__avatar {
+    margin-right: 0;
+    align-self: center;
+  }
+}

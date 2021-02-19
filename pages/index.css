@@ -33,6 +33,7 @@
 @import url(../blocks/user/user.css);
 @import url(../blocks/user/__wrapper/user__wrapper.css);
 @import url(../blocks/user/__avatar/user__avatar.css);
+@import url(../blocks/user/__info/user__info.css);
 @import url(../blocks/user/__text/user__text.css);
 @import url(../blocks/user/__name/user__name.css);
 @import url(../blocks/user/__vocation/user__vocation.css);
@@ -56,6 +57,10 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* popup */
+
+
 /*
 
 @import url(..);

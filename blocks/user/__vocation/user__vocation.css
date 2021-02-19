@@ -3,3 +3,10 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media (max-width: 425px) {
+  .user__vocation {
+    font-size: 14px;
+    line-height: normal;
+  }
+}

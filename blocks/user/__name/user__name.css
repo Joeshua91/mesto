@@ -4,3 +4,10 @@
   font-size: 42px;
   line-height: 48px;
 }
+
+@media (max-width: 425px) {
+  .user__name {
+    font-size: 27px;
+    line-height: normal;
+  }
+}

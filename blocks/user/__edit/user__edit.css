@@ -6,3 +6,18 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media (max-width: 525px) {
+  .user__edit{
+    margin-top: 12px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .user__edit {
+    width: 18px;
+    height: 18px;
+    margin-top: 8px;
+  }
+}

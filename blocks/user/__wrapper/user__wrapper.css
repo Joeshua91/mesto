@@ -1,3 +1,17 @@
 .user__wrapper {
   display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .user__wrapper {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 525px) {
+  .user__wrapper {
+    flex-direction: column;
+    align-self: center;
+  }
 }

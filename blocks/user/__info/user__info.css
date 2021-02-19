@@ -1,0 +1,9 @@
+.user__info {
+  display: flex;
+}
+
+@media (max-width: 525px) {
+  .user__info {
+    margin-top: 26px;
+  }
+}

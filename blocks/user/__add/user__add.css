@@ -4,4 +4,20 @@
   background-image: url('../../../images/plus.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px;
+}
+
+@media (max-width: 720px) {
+  .user__add {
+    width: 75%;
+    min-width: 282px;
+    margin-top: 36px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .user__add {
+    background-size: 16px;
+  }
 }

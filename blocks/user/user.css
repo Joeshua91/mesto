@@ -1,4 +1,17 @@
 .user {
+  margin-top: 40px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+}
+
+@media (max-width: 720px) {
+  .user {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 525px) {
+  .user {
+  }
 }
