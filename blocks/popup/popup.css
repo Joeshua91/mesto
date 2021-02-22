@@ -1,7 +1,5 @@
 .popup {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -15,5 +13,4 @@
   right: 0;
   color: #000;
   background-color: rgba(0, 0, 0, .5);
-  display: none;
 }
