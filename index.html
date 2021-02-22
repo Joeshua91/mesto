@@ -26,7 +26,7 @@
                 <h1 class="user__name">Жак-Ив Кусто</h1>
                 <p class="user__vocation">Исследователь океана</p>
               </div>
-              <buttom class="button user__edit"></buttom>
+              <buttom class="button user__edit" id="button-edit"></buttom>
             </div>
           </div>
           <button class="button user__add"></button>
@@ -78,7 +78,7 @@
         <div class="place-card">
           <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
           <div class="place-card__wrapper">
-            <h3 class="place-card__name">Карачаево-Ч...</h3>
+            <h3 class="place-card__name">Карачаево-Черкессия</h3>
             <button class="place-card__like"></button>
           </div>
         </div>
@@ -96,10 +96,9 @@
       <div class="popup__container">
         <h4 class="popup__title">Редактировать профиль</h4>
         <form class="popup__form">
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Имя" value="Жак-Ив Кусто">
-          <input class="popup__input popup__input_type_vocation" type="text" placeholder="Деятельность"
-            value="Исследователь океана">
-          <button class="popup__button-save">Сохранить</button>
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Имя">
+          <input class="popup__input popup__input_type_vocation" type="text" placeholder="Деятельность">
+          <button type="submit" class="popup__button-save">Сохранить</button>
         </form>
         <button class="popup__button-close"></button>
       </div>
