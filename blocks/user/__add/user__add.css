@@ -12,6 +12,8 @@
     width: 75%;
     min-width: 282px;
     margin-top: 36px;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
   }
 }

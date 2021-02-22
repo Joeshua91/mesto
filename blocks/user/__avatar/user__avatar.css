@@ -10,6 +10,8 @@
 @media (max-width: 525px) {
   .user__avatar {
     margin-right: 0;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
   }
 }
