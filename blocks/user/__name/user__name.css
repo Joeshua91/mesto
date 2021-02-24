@@ -1,12 +1,23 @@
 .user__name {
-  margin: 0px 0px 16px 0px;
+  max-width: 400px;
+  margin: 0;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 525px) {
+  .user__name {
+    max-width: 350px;
+  }
 }
 
 @media (max-width: 425px) {
   .user__name {
+    max-width: 250px;
     font-size: 27px;
     line-height: normal;
   }

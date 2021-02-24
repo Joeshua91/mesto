@@ -1,11 +1,22 @@
 .user__vocation {
+  max-width: 400px;
   margin: 0;
   font-size: 18px;
   line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 525px) {
+  .user__vocation {
+    max-width: 350px;
+  }
 }
 
 @media (max-width: 425px) {
   .user__vocation {
+    max-width: 250px;
     font-size: 14px;
     line-height: normal;
   }

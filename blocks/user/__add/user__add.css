@@ -7,7 +7,7 @@
   background-size: 22px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .user__add {
     width: 75%;
     min-width: 282px;
@@ -18,7 +18,7 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 525px) {
   .user__add {
     background-size: 16px;
   }

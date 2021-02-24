@@ -1,6 +1,6 @@
 .place-card__wrapper {
   width: 246px;
-  height: 78px;
+  padding: 25px 0px 31px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,4 +10,5 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  align-items
 }

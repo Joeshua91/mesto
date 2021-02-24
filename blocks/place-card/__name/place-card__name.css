@@ -1,5 +1,5 @@
 .place-card__name {
-  width: 200px;
+  max-width: 200px;
   margin: 0;
   font-weight: 900;
   font-size: 24px;

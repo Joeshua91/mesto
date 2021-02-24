@@ -12,3 +12,10 @@
 .footer__copyright:hover {
   opacity: .6;
 }
+
+@media (max-width: 525px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: normal;
+  }
+}
