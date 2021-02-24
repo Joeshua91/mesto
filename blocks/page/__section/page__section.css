@@ -1,0 +1,9 @@
+.page__section {
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .page__section {
+    margin: 0 19px;
+  }
+}
