@@ -2,7 +2,7 @@
   width: 22px;
   height: 19px;
   border: none;
-  background-image: url('../../../images/like.png');
+  background-image: url('../../../images/like.svg');
   background-size: cover;
   background-color: transparent;
   cursor: pointer;
@@ -12,7 +12,7 @@
 }
 
 .place-card__like:active{
-  background-image: url('../../../images/like_active.png');
+  background-image: url('../../../images/like_active.svg');
 }
 
 .place-card__like:hover {

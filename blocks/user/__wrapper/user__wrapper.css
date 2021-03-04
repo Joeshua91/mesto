@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .user__wrapper {
     -webkit-box-pack: center;
     -ms-flex-pack: center;

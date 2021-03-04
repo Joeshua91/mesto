@@ -1,23 +1,17 @@
 .user__edit {
   width: 24px;
   height: 24px;
-  margin: 30px 0px 0px 18px;
-  background-image: url('../../../images/edit.png');
+  margin-left: 18px;
+  align-self: center;
+  background-image: url('../../../images/edit-button.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
 
-@media (max-width: 525px) {
-  .user__edit{
-    margin-top: 12px;
-    margin-left: 10px;
-  }
-}
-
 @media (max-width: 425px) {
   .user__edit {
+    margin-left: 10px;
     width: 18px;
     height: 18px;
-    margin-top: 8px;
   }
 }

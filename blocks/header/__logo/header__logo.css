@@ -3,7 +3,8 @@
   height: 33px;
   margin: 45px 0px 40px;
   background-image: url('../../../images/header-logo.svg');
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   }
 
   @media (max-width: 900px) {

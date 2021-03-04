@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
+  <title>Место</title>
   <link rel="stylesheet" href="pages/index.css">
 </head>
 
@@ -15,74 +15,73 @@
       <a class="header__logo" href="#" target="_self" rel="noopener"></a>
     </header>
 
-    <main class="content">
+    <main class="content page__section">
 
-      <section class="profile">
-        <div class="user">
-          <div class="user__wrapper">
-            <div class="user__avatar"></div>
-            <div class="user__info">
-              <div class="user__text">
-                <h1 class="user__name">Жак-Ив Кусто</h1>
-                <p class="user__vocation">Исследователь океана</p>
-              </div>
-              <buttom class="button user__edit" id="button-edit"></buttom>
+      <section class="user">
+        <div class="user__wrapper">
+          <div class="user__avatar"></div>
+          <div class="user__info">
+            <div class="user__text">
+              <h1 class="user__name">Жак-Ив Кусто</h1>
+              <button class="button user__edit" type="button" aria-label="edit" id="button-edit"></button>
             </div>
+            <p class="user__vocation">Исследователь океана</p>
           </div>
-          <button class="button user__add"></button>
         </div>
+        <button class="button user__add" type="button" aria-label="add"></button>
 
       </section>
 
       <section class="places">
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Карачаевск</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
+        <ul class="places__section">
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Карачаевск</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
 
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Гора Эльбрус</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Гора Эльбрус</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
 
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Домбай</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Домбай</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
 
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Гора Эльбрус</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Гора Эльбрус</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
 
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Домбай</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Домбай</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
 
-        <div class="place-card">
-          <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-          <div class="place-card__wrapper">
-            <h3 class="place-card__name">Карачаево-Черкессия</h3>
-            <button class="place-card__like"></button>
-          </div>
-        </div>
-
+          <li class="place-card">
+            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
+            <div class="place-card__wrapper">
+              <h2 class="place-card__name">Карачаево-Черкессия</h2>
+              <button class="place-card__like" type="button" aria-label="like"></button>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
 
@@ -96,13 +95,13 @@
 
     <div class="popup">
       <div class="popup__container">
-        <h4 class="popup__title">Редактировать профиль</h4>
-        <form class="popup__form">
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Имя">
-          <input class="popup__input popup__input_type_vocation" type="text" placeholder="Деятельность">
-          <button type="submit" class="popup__button-save">Сохранить</button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="editUser">
+          <input class="popup__input popup__input_type_name" name="name" type="text" placeholder="Имя">
+          <input class="popup__input popup__input_type_vocation" name="vocation" type="text" placeholder="Деятельность">
+          <button class="popup__button-save" type="submit" aria-label="save">Сохранить</button>
         </form>
-        <button class="popup__button-close"></button>
+        <button class="popup__button-close" type="button" aria-label="close"></button>
       </div>
     </div>
 

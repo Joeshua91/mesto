@@ -1,5 +1,5 @@
 .popup__form {
-  margin-top: 54px;
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,6 +11,6 @@
 
 @media (max-width: 400px) {
   .popup__form {
-    margin-top: 75px;
+    margin-top: 68px;
   }
 }

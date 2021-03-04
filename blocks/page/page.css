@@ -2,9 +2,3 @@
   max-width: 880px;
   margin: 0 auto;
 }
-
-@media (max-width: 900px) {
-  .page {
-    margin: 0 19px;
-  }
-}
