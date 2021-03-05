@@ -23,7 +23,7 @@
           <div class="user__info">
             <div class="user__text">
               <h1 class="user__name">Жак-Ив Кусто</h1>
-              <button class="button user__edit" type="button" aria-label="edit" id="button-edit"></button>
+              <button class="button user__edit" type="button" aria-label="edit"></button>
             </div>
             <p class="user__vocation">Исследователь океана</p>
           </div>
@@ -34,53 +34,7 @@
 
       <section class="places">
         <ul class="places__section">
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Карачаевск</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
 
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Гора Эльбрус</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Домбай</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Гора Эльбрус</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Домбай</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Карачаево-Черкессия</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -93,7 +47,7 @@
 
     <!-- popup Edit -->
 
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="editUser">
@@ -107,20 +61,22 @@
 
     <!-- popup Add -->
 
-    <div class="popup">
+    <div class="popup popup_type_add">
       <div class="popup__container">
         <h4 class="popup__title">Новое место</h4>
         <form class="popup__form">
-          <input class="popup__input popup__input_type_title-place" type="text" placeholder="Название">
-          <input class="popup__input popup__input_type_link-place" type="text" placeholder="Ссылка на картинку">
+          <input class="popup__input popup__input_type_title-place" name="title-place" type="text"
+            placeholder="Название">
+          <input class="popup__input popup__input_type_link-place" name="link-place" type="text"
+            placeholder="Ссылка на картинку">
           <button type="submit" class="popup__button-save">Создать</button>
         </form>
-        <button class="popup__button-close"></button>
+        <button class="popup__button-close" type="button" aria-label="close"></button>
       </div>
     </div>
 
   </div>
-  <script src="./script/script.js"></script>
+  <script src="./script/index.js"></script>
 </body>
 
 </html>
