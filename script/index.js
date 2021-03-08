@@ -1,5 +1,3 @@
-/* МАССИВЫ */
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -47,58 +45,50 @@ function renderPlace() {
 
 renderPlace();
 
-/* ПЕРЕМЕННЫЕ */
-
-const showPopupEditButton = document.querySelector('.user__edit'); // кнопка Edit profile
-const popupEdit = document.querySelector('.popup_type_edit'); // popup Edit
-
-const closePopupButton = document.querySelector('.popup__button-close'); // крестик на popup
-const savePopupButton = document.querySelector('.popup__button-save'); // кнопка "Сохранить" на popup
+/* - - - - - - - - - - */
 
 const userName = document.querySelector('.user__name');
 const userVocation = document.querySelector('.user__vocation');
+const buttonEdit = document.querySelector('.user__edit');
+const buttonAdd = document.querySelector('.user__add');
+const popupEdit = document.querySelector('.popup_type_edit');
 const nameInput = document.querySelector('.popup__input_type_name');
 const vocationInput = document.querySelector('.popup__input_type_vocation');
+const popupAdd = document.querySelector('.popup_type_add');
+const closePopupButton = document.querySelectorAll('.popup__button-close');
+const savePopupButton = document.querySelector('.popup__button-save');
+const formPopupEdit = document.querySelector('.popup__form_type_edit');
+const formPopupAdd = document.querySelector('.popup__form_type_add');
 
-const formElement = document.querySelector('.popup__form');
+const openPopup = popup => {
+  popup.classList.toggle('popup_opened');
+};
 
-/* ФУНКЦИИ */
+const closePopup = popup => {
+  popup.classList.toggle('popup_opened');
+};
 
-function togglePopupEdit() {
-  if (!popupEdit.classList.contains('popup_opened')) {
-    nameInput.value = userName.textContent;
-    vocationInput.value = userVocation.textContent;
-  }
-  popupEdit.classList.toggle('popup_opened');
-}
-
-function formSubmitHandler(evt) {
+const formSubmitHandler = evt => {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userVocation.textContent = vocationInput.value;
-  togglePopupEdit();
-}
+  closePopup(popupEdit);
+};
 
-/* ОБРАБОТЧИКИ СОБЫТИЙ */
-showPopupEditButton.addEventListener('click', togglePopupEdit);
-closePopupButton.addEventListener('click', togglePopupEdit);
-formElement.addEventListener('submit', formSubmitHandler);
+buttonEdit.addEventListener('click', () => {
+  nameInput.value = userName.textContent;
+  vocationInput.value = userVocation.textContent;
+  openPopup(popupEdit);
+});
 
+buttonAdd.addEventListener('click', () => {
+  openPopup(popupAdd);
+});
 
-/* - - - - - - - - - - */
-/*
-const showPopupAddButton = document.querySelector('.user__add'); // кнопка Add profile
-const popupAdd = document.querySelector('.popup_type_add'); // popup Add
+closePopupButton.forEach(item => {
+  item.addEventListener('click', (evt) => {
+    closePopup(evt.target.closest('.popup'));
+  });
+});
 
-function togglePopupAdd() {
-  popupAdd.classList.toggle('popup_opened');
-}
-
-showPopupAddButton.addEventListener('click', togglePopupAdd);
-closePopupButton.addEventListener('click', togglePopupAdd);
-
-*/
-
-// переделать всё
-// popup переписать с модификаторами,
-// иначе открываются оба попапа
+formPopupEdit.addEventListener('submit', formSubmitHandler);
