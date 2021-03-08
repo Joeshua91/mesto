@@ -49,7 +49,7 @@ const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place
 
 /* = ФУНКЦИИ = */
 
-const initial = () => {
+const initialPlaces = () => {
   const initialResult = initialCards.map(createPlace);
   placeSection.append(...initialResult);
 };
@@ -86,9 +86,11 @@ const formAddSubmitHandler = event => {
 const createPlace = item => {
   const placeCard = templatePlaceCard.content.cloneNode(true);
   const placeCardImage = placeCard.querySelector('.place-card__image');
-  const placeCardName = placeCard.querySelector('.place-card__name')
+  const placeCardName = placeCard.querySelector('.place-card__name');
+  const placeCardLike = placeCard.querySelector('.place-card__like');
   placeCardImage.src = item.link;
   placeCardName.textContent = item.name;
+  placeCardLike.addEventListener('click', likeHandler);
 
   return placeCard;
 };
@@ -97,10 +99,14 @@ const renderPlace = item => {
   placeSection.prepend(createPlace(item));
 };
 
+const likeHandler = (event) => {
+  event.target.classList.toggle('place-card__like_active');
+};
+
 
 /* = ВЫЗОВЫ ФУНКЦИЙ = */
 
-initial();
+initialPlaces();
 
 
 /* = ОБРАБОТЧИКИ СОБЫТИЙ = */
