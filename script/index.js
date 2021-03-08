@@ -26,24 +26,53 @@ const initialCards = [
 ];
 
 const placeSection = document.querySelector('.places__section');
+const formPopupAdd = document.querySelector('.popup__form_type_add'); // потом удалить
+
+function createPlace(item) {
+  return `
+    <li class="place-card">
+      <img class="place-card__image" src="${item.link}" alt="${item.name}">
+      <div class="place-card__wrapper">
+        <h2 class="place-card__name">${item.name}</h2>
+        <button class="place-card__like" type="button" aria-label="like"></button>
+      </div>
+    </li>
+  `
+};
 
 function renderPlace() {
-  const result = initialCards.map(function (item) {
-    return `
-      <li class="place-card">
-        <img class="place-card__image" src="${item.link}" alt="${item.name}">
-        <div class="place-card__wrapper">
-          <h2 class="place-card__name">${item.name}</h2>
-          <button class="place-card__like" type="button" aria-label="like"></button>
-        </div>
-      </li>
-    `
-  }).join('');
+  const result = initialCards.map(createPlace).join('');
 
-  placeSection.insertAdjacentHTML('afterbegin', result)
+  placeSection.insertAdjacentHTML('afterbegin', result);
 }
 
+function addPlace(evt) {
+  evt.preventDefault();
+  const inputPlaceTitle = formPopupAdd.querySelector('.popup__input_type_title-place');
+  const placeTitle = inputPlaceTitle.value;
+  const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place');
+  const placeLink = inputPlaceLink.value;
+
+  const newPlace = createPlace({
+    name: placeTitle,
+    link: placeLink,
+  });
+
+  placeSection.insertAdjacentHTML('afterbegin', newPlace);
+
+  inputPlaceTitle.value = '';
+  inputPlaceLink.value = '';
+};
+
+
 renderPlace();
+formPopupAdd.addEventListener('submit', addPlace);
+
+
+
+
+
+
 
 /* - - - - - - - - - - */
 
@@ -58,7 +87,7 @@ const popupAdd = document.querySelector('.popup_type_add');
 const closePopupButton = document.querySelectorAll('.popup__button-close');
 const savePopupButton = document.querySelector('.popup__button-save');
 const formPopupEdit = document.querySelector('.popup__form_type_edit');
-const formPopupAdd = document.querySelector('.popup__form_type_add');
+// const formPopupAdd = document.querySelector('.popup__form_type_add');
 
 const openPopup = popup => {
   popup.classList.toggle('popup_opened');
