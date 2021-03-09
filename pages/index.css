@@ -74,3 +74,10 @@
 
 @import url(../blocks/popup/__input/_type/popup__input_type_title-place.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_link-place.css);
+
+/* popup Add */
+
+@import url(../blocks/popup/__view/popup__view.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__figcaption/popup__figcaption.css);

@@ -34,7 +34,6 @@
 
       <section class="places">
         <ul class="places__section">
-
         </ul>
       </section>
     </main>
@@ -63,7 +62,7 @@
 
     <div class="popup popup_type_add">
       <div class="popup__container">
-        <h4 class="popup__title">Новое место</h4>
+        <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_type_add">
           <input class="popup__input popup__input_type_title-place" name="title-place" type="text"
             placeholder="Название">
@@ -75,20 +74,30 @@
       </div>
     </div>
 
-  </div>
+    <!-- popup Add -->
 
-  <template class="place-template">
-    <li class="place-card">
-      <img class="place-card__image" src="./" alt=" ">
-      <div class="place-card__wrapper">
-        <h2 class="place-card__name"></h2>
-        <button class="place-card__like" type="button" aria-label="like"></button>
+    <div class="popup popup_type_view">
+      <div class="popup__view">
+        <figure class="popup__figure">
+          <img class="popup__image" src="#" alt="#">
+          <figcaption class="popup__figcaption"></figcaption>
+        </figure>
+        <button class="popup__button-close" type="button" aria-label="close"></button>
       </div>
-      <button class="place-card__delete" type="button" aria-label="delete"></button>
-    </li>
-  </template>
+    </div>
 
-  <script src="./script/index.js"></script>
+    <template class="place-template">
+      <li class="place-card">
+        <img class="place-card__image" src="#" alt="">
+        <div class="place-card__wrapper">
+          <h2 class="place-card__name"></h2>
+          <button class="place-card__like" type="button" aria-label="like"></button>
+        </div>
+        <button class="place-card__delete" type="button" aria-label="delete"></button>
+      </li>
+    </template>
+
+    <script src="./script/index.js"></script>
 </body>
 
 </html>
