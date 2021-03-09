@@ -58,15 +58,15 @@ const togglePopup = popup => {
   popup.classList.toggle('popup_opened');
 };
 
-const formEditSubmitHandler = event => {
-  event.preventDefault();
+const formEditSubmitHandler = e => {
+  e.preventDefault();
   userName.textContent = nameInput.value;
   userVocation.textContent = vocationInput.value;
   togglePopup(popupEdit);
 };
 
-const formAddSubmitHandler = event => {
-  event.preventDefault();
+const formAddSubmitHandler = e => {
+  e.preventDefault();
   const addPlace = {
     name: '',
     link: '',
@@ -84,10 +84,12 @@ const createPlace = item => {
   const placeCardImage = placeCard.querySelector('.place-card__image');
   const placeCardName = placeCard.querySelector('.place-card__name');
   const placeCardLike = placeCard.querySelector('.place-card__like');
+  const placeCardDelete = placeCard.querySelector('.place-card__delete');
   placeCardImage.src = item.link;
   placeCardName.textContent = item.name;
   placeCardImage.alt = placeCardName.textContent;
   placeCardLike.addEventListener('click', likeHandler);
+  placeCardDelete.addEventListener('click', deleteHandler);
 
   return placeCard;
 };
@@ -96,9 +98,13 @@ const renderPlace = item => {
   placeSection.prepend(createPlace(item));
 };
 
-const likeHandler = (event) => {
-  event.target.classList.toggle('place-card__like_active');
+const likeHandler = (e) => {
+  e.target.classList.toggle('place-card__like_active');
 };
+
+const deleteHandler = (e) => {
+  e.target.parentElement.remove();
+}
 
 
 /* = ВЫЗОВЫ ФУНКЦИЙ = */
@@ -119,8 +125,8 @@ buttonAdd.addEventListener('click', () => {
 });
 
 closePopupButton.forEach(item => {
-  item.addEventListener('click', (event) => {
-    togglePopup(event.target.closest('.popup'));
+  item.addEventListener('click', (e) => {
+    togglePopup(e.target.closest('.popup'));
   });
 });
 

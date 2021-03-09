@@ -1,4 +1,5 @@
 .place-card {
+  position: relative;
   width: 282px;
   display: -webkit-box;
   display: -ms-flexbox;

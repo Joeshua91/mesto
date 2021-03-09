@@ -50,6 +50,7 @@
 @import url(../blocks/place-card/__name/place-card__name.css);
 @import url(../blocks/place-card/__like/place-card__like.css);
 @import url(../blocks/place-card/__like/_active/place-card__like_active.css);
+@import url(../blocks/place-card/__delete/place-card__delete.css);
 
 /* footer */
 
