@@ -1,4 +1,5 @@
 .place-card {
+  position: relative;
   width: 282px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10,7 +11,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
   list-style-type: none;
 }
