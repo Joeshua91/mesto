@@ -90,6 +90,7 @@ const createPlace = item => {
   const placeCardLike = placeCard.querySelector('.place-card__like');
   placeCardImage.src = item.link;
   placeCardName.textContent = item.name;
+  placeCardImage.alt = placeCardName.textContent;
   placeCardLike.addEventListener('click', likeHandler);
 
   return placeCard;
