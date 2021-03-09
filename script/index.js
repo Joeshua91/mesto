@@ -54,11 +54,7 @@ const initialPlaces = () => {
   placeSection.append(...initialResult);
 };
 
-const openPopup = popup => {
-  popup.classList.toggle('popup_opened');
-};
-
-const closePopup = popup => {
+const togglePopup = popup => {
   popup.classList.toggle('popup_opened');
 };
 
@@ -66,7 +62,7 @@ const formEditSubmitHandler = event => {
   event.preventDefault();
   userName.textContent = nameInput.value;
   userVocation.textContent = vocationInput.value;
-  closePopup(popupEdit);
+  togglePopup(popupEdit);
 };
 
 const formAddSubmitHandler = event => {
@@ -80,7 +76,7 @@ const formAddSubmitHandler = event => {
   addPlace.link = inputPlaceLink.value;
 
   renderPlace(addPlace);
-  closePopup(popupAdd);
+  togglePopup(popupAdd);
 };
 
 const createPlace = item => {
@@ -115,16 +111,16 @@ initialPlaces();
 buttonEdit.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   vocationInput.value = userVocation.textContent;
-  openPopup(popupEdit);
+  togglePopup(popupEdit);
 });
 
 buttonAdd.addEventListener('click', () => {
-  openPopup(popupAdd);
+  togglePopup(popupAdd);
 });
 
 closePopupButton.forEach(item => {
   item.addEventListener('click', (event) => {
-    closePopup(event.target.closest('.popup'));
+    togglePopup(event.target.closest('.popup'));
   });
 });
 
