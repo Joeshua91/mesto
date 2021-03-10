@@ -11,11 +11,15 @@
 <body class="root">
   <div class="page">
 
+    <!-- header -->
+
     <header class="header">
       <a class="header__logo" href="#" target="_self" rel="noopener"></a>
     </header>
 
     <main class="content page__section">
+
+      <!-- user -->
 
       <section class="user">
         <div class="user__wrapper">
@@ -23,7 +27,7 @@
           <div class="user__info">
             <div class="user__text">
               <h1 class="user__name">Жак-Ив Кусто</h1>
-              <button class="button user__edit" type="button" aria-label="edit" id="button-edit"></button>
+              <button class="button user__edit" type="button" aria-label="edit"></button>
             </div>
             <p class="user__vocation">Исследователь океана</p>
           </div>
@@ -32,58 +36,15 @@
 
       </section>
 
+      <!-- places -->
+
       <section class="places">
         <ul class="places__section">
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Карачаевск</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Гора Эльбрус</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Домбай</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-elbrus.png" alt="Гора Эльбрус">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Гора Эльбрус</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-dombay.png" alt="Домбай">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Домбай</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
-
-          <li class="place-card">
-            <img class="place-card__image" src="./images/element-karachaevo.png" alt="Карачаево">
-            <div class="place-card__wrapper">
-              <h2 class="place-card__name">Карачаево-Черкессия</h2>
-              <button class="place-card__like" type="button" aria-label="like"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
+
+    <!-- footer -->
 
     <footer class="footer">
       <a href="https://github.com/Joeshua91" class="footer__copyright" target="_blank" rel="noopener">
@@ -91,10 +52,12 @@
       </a>
     </footer>
 
-    <div class="popup">
+    <!-- popup Edit -->
+
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="editUser">
+        <form class="popup__form popup__form_type_edit" name="editUser">
           <input class="popup__input popup__input_type_name" name="name" type="text" placeholder="Имя">
           <input class="popup__input popup__input_type_vocation" name="vocation" type="text" placeholder="Деятельность">
           <button class="popup__button-save" type="submit" aria-label="save">Сохранить</button>
@@ -103,8 +66,53 @@
       </div>
     </div>
 
+    <!-- popup Add -->
+
+    <div class="popup popup_type_add">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form popup__form_type_add">
+          <input class="popup__input popup__input_type_title-place" name="title-place" type="text"
+            placeholder="Название">
+          <input class="popup__input popup__input_type_link-place" name="link-place" type="text"
+            placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__button-save">Создать</button>
+        </form>
+        <button class="popup__button-close" type="button" aria-label="close"></button>
+      </div>
+    </div>
+
+    <!-- popup View -->
+
+    <div class="popup popup_type_view">
+      <div class="popup__view">
+        <figure class="popup__figure">
+          <img class="popup__image" src="#" alt="#">
+          <figcaption class="popup__figcaption"></figcaption>
+        </figure>
+        <button class="popup__button-close" type="button" aria-label="close"></button>
+      </div>
+    </div>
+
+    <!-- place-template -->
+
+    <template class="place-template">
+      <li class="place-card">
+        <img class="place-card__image" src="#" alt="">
+        <div class="place-card__wrapper">
+          <h2 class="place-card__name"></h2>
+          <button class="place-card__like" type="button" aria-label="like"></button>
+        </div>
+        <button class="place-card__delete" type="button" aria-label="delete"></button>
+      </li>
+    </template>
+
+    <!-- scripts JS -->
+
+    <script src="./script/initial-сards.js"></script>
+    <script src="./script/index.js"></script>
+
   </div>
-  <script src="./script/script.js"></script>
 </body>
 
 </html>
