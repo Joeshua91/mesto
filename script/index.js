@@ -19,6 +19,7 @@ const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
 
+
 /* = ФУНКЦИИ = */
 
 const initialPlaces = () => {
@@ -47,15 +48,15 @@ const formEditSubmitHandler = evt => {
 const formAddSubmitHandler = evt => {
   evt.preventDefault();
 
-  renderPlace({
-    name: inputPlaceTitle.value,
-    link: inputPlaceLink.value,
-  })
+  const addPlace = {
+    name: '',
+    link: '',
+  };
+  addPlace.name = inputPlaceTitle.value;
+  addPlace.link = inputPlaceLink.value;
 
-  renderPlace();
-
-  inputPlaceTitle.value = '';
-  inputPlaceLink.value = '';
+  renderPlace(addPlace);
+  formPopupAdd.reset();
   closePopup(popupAdd);
 };
 
@@ -91,8 +92,6 @@ const handleDeleteCard = (evt) => {
 }
 
 const handlePreviewPicture = item => {
-  //
-
   viewPlaceCardImage.src = item.link;
   viewPlaceCardImage.alt = item.name;
   viewPlaceCardName.textContent = item.name;
