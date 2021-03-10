@@ -19,7 +19,6 @@ const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
 
-
 /* = ФУНКЦИИ = */
 
 const initialPlaces = () => {
@@ -54,6 +53,7 @@ const formAddSubmitHandler = evt => {
   })
 
   renderPlace();
+
   inputPlaceTitle.value = '';
   inputPlaceLink.value = '';
   closePopup(popupAdd);
