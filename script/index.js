@@ -29,11 +29,11 @@ const initialPlaces = () => {
 };
 
 const openPopup = popup => {
-  popup.classList.toggle('popup_opened');
+  popup.classList.add('popup_opened');
 };
 
 const closePopup = popup => {
-  popup.classList.toggle('popup_opened');
+  popup.classList.remove('popup_opened');
 };
 
 const formEditSubmitHandler = evt => {
@@ -48,14 +48,11 @@ const formEditSubmitHandler = evt => {
 const formAddSubmitHandler = evt => {
   evt.preventDefault();
 
-  const addPlace = {
-    name: '',
-    link: '',
-  };
-  addPlace.name = inputPlaceTitle.value;
-  addPlace.link = inputPlaceLink.value;
+  renderPlace({
+    name: inputPlaceTitle.value,
+    link: inputPlaceLink.value,
+  });
 
-  renderPlace(addPlace);
   formPopupAdd.reset();
   closePopup(popupAdd);
 };
