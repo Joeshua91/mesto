@@ -23,9 +23,9 @@ const viewPlaceCardName = document.querySelector('.popup__figcaption');
 /* = ФУНКЦИИ = */
 
 const initialPlaces = () => {
-  const initialResult = initialCards.map(createPlace);
+  const initialResults = initialCards.map(createPlace);
 
-  placeSection.append(...initialResult);
+  placeSection.append(...initialResults);
 };
 
 const openPopup = popup => {
