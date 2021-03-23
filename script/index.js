@@ -1,5 +1,6 @@
 /* = ПЕРЕМЕННЫЕ = */
 
+const popupSelector = document.querySelectorAll('.popup');
 const userName = document.querySelector('.user__name');
 const userVocation = document.querySelector('.user__vocation');
 const buttonEdit = document.querySelector('.user__edit');
@@ -22,22 +23,26 @@ const viewPlaceCardName = document.querySelector('.popup__figcaption');
 
 /* = ФУНКЦИИ = */
 
+// инициализация карточек
 const initialPlaces = () => {
   const initialResults = initialCards.map(createPlace);
 
   placeSection.append(...initialResults);
 };
 
+// открытие popup
 const openPopup = popup => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePressEsc);
 };
 
+// закрытие popup
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
   document.addEventListener('keydown', closePressEsc);
 };
 
+// закрытие popup клавишей 'Esc'
 const closePressEsc = (evt) => {
   if (evt.key === 'Escape') {
     const activedPopup = document.querySelector('.popup_opened');
@@ -45,6 +50,7 @@ const closePressEsc = (evt) => {
   }
 };
 
+// редактирование профиля
 const formEditSubmitHandler = evt => {
   evt.preventDefault();
 
@@ -54,6 +60,7 @@ const formEditSubmitHandler = evt => {
   closePopup(popupEdit);
 };
 
+// добавление карточки
 const formAddSubmitHandler = evt => {
   evt.preventDefault();
 
@@ -66,6 +73,7 @@ const formAddSubmitHandler = evt => {
   closePopup(popupAdd);
 };
 
+// создание карточки
 const createPlace = item => {
   const placeCard = templatePlaceCard.content.cloneNode(true);
   const placeCardImage = placeCard.querySelector('.place-card__image');
@@ -85,18 +93,22 @@ const createPlace = item => {
   return placeCard;
 };
 
+// рендеринг карточек
 const renderPlace = item => {
   placeSection.prepend(createPlace(item));
 };
 
+// активация 'лайка'
 const handleLikeIcon = (evt) => {
   evt.target.classList.toggle('place-card__like_active');
 };
 
+// удаление карточки
 const handleDeleteCard = (evt) => {
   evt.target.closest('.place-card').remove();
 }
 
+// показ картинки из карточки
 const handlePreviewPicture = item => {
   viewPlaceCardImage.src = item.link;
   viewPlaceCardImage.alt = item.name;
@@ -127,6 +139,13 @@ buttonAdd.addEventListener('click', () => {
 closePopupButtons.forEach(item => {
   item.addEventListener('click', (evt) => {
     closePopup(evt.target.closest('.popup'));
+  });
+});
+
+// закрытие popup по нажатию на overlay
+popupSelector.forEach(item => {
+  item.addEventListener('click', (evt) => {
+    closePopup(evt.target);
   });
 });
 
