@@ -1,9 +1,8 @@
-/* = ПРОВЕРЯЕМ ПУСТЫЕ ЛИ ПОЛЯ ВВОДА = */
+/* = ПРОВЕРИТЬ ПУСТЫЕ ЛИ ПОЛЯ ВВОДА = */
 
 const allInputsEmpty = (inputList) => {
   return !inputList.some(inputElement => inputElement.value.length > 0);
 };
-
 
 /* = ФУНКЦИЯ НЕВАЛИДНОГО ПОЛЯ ВВОДА = */
 
@@ -11,11 +10,10 @@ const hasInvalidInput = (inputList) => {
   return inputList.some(inputElement => !inputElement.validity.valid);
 };
 
-
 /* = ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ СОСТОЯНИЯ КНОПКИ = */
 
 const setButtonState = (inputList, buttonElement, invalidButtonClass) => {
-  // если хотя бы один input невалидный или если есть пустые поля
+  // если хотя бы один input невалидный |или| если есть пустые поля
   if (hasInvalidInput(inputList) || allInputsEmpty(inputList)) {
     // сделать кнопку НЕАКТИВНОЙ
     buttonElement.classList.add(invalidButtonClass);
@@ -27,7 +25,6 @@ const setButtonState = (inputList, buttonElement, invalidButtonClass) => {
     buttonElement.removeAttribute('disabled');
   }
 };
-
 
 /* = ФУНКЦИЯ ПОКАЗА СООБЩЕНИЯ ОБ ОШИБКE = */
 
@@ -51,7 +48,6 @@ const hideErrorMessage = (formElement, inputElement,
   errorElement.textContent = '';
 };
 
-
 /* = ФУНКЦИЯ ПРОВЕРКИ ПОЛЯ ВВОДА НА ВАЛИДНОСТЬ = */
 
 const checkInputValid = (validSelector, formElement, inputElement) => {
@@ -68,7 +64,6 @@ const checkInputValid = (validSelector, formElement, inputElement) => {
       validSelector.inputErrorClass, validSelector.errorClass);
   }
 };
-
 
 /* = НАВЕШАТЬ ОБРАБОТЧИКИ ПОЛЯМ ВВОДА = */
 
@@ -89,14 +84,9 @@ const setInputListeners = (validSelector, formElement) => {
     });
     // проверить состояние полей
     // и сделать состояние кнопки submit актуальной при загрузке страницы
-    setButtonState(inputList, buttonElement, validSelector.invalidButtonClass); // ???
-    // почему не работает???
-    // почему консоль возвращает значение 'undefined' здесь,
-    // а в предыдущем вызове функции всё ok?
-    // console.log(setButtonState(inputList, buttonElement, validSelector.invalidButtonClass));
+    setButtonState(inputList, buttonElement, validSelector.invalidButtonClass);
   });
 };
-
 
 /* = ФУНКЦИЯ ВАЛИДАЦИИ ФОРМ = */
 
@@ -114,7 +104,6 @@ const enableValidation = (validSelector) => {
     setInputListeners(validSelector, formElement);
   });
 };
-
 
 /* = ВЫЗОВ ФУНКЦИИ ВАЛИДАЦИИ ФОРМ = */
 
