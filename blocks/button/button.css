@@ -1,7 +1,7 @@
 .button {
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 1);
   cursor: pointer;
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;

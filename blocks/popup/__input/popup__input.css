@@ -2,11 +2,12 @@
   padding: 0 0 13px;
   font-size: 14px;
   line-height: normal;
-  color: #000000;
+  color: rgba(0, 0, 0, 1);
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
-
+/*
 .popup__input:first-child {
   margin-bottom: 30px;
 }
+*/
