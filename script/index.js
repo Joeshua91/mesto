@@ -30,10 +30,19 @@ const initialPlaces = () => {
 
 const openPopup = popup => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePressEsc);
 };
 
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', closePressEsc);
+};
+
+const closePressEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const activedPopup = document.querySelector('.popup_opened');
+    closePopup(activedPopup);
+  }
 };
 
 const formEditSubmitHandler = evt => {
