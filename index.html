@@ -78,11 +78,11 @@
         <form class="popup__form popup__form_type_add" name="addPlace" novalidate>
           <input class="popup__input popup__input_type_title-place" id="title-place" name="title-place" type="text"
             placeholder="Название" minlength="2" maxlength="30" required>
-          <span class="popup__input-error" id="title-error"></span>
-          <input class="popup__input popup__input_type_link-place" id="link-place" name="link-place" type="text"
-            placeholder="Ссылка на картинку" required>
-          <span class="popup__input-error" id="link-error"></span>
-          <button type="submit" class="popup__button-save">Создать</button>
+          <span class="popup__input-error" id="title-place-error"></span>
+          <input class="popup__input popup__input_type_link-place" id="link-place" name="link-place" type="url"
+            placeholder="Ссылка на картинку" minlength="2" required>
+          <span class="popup__input-error" id="link-place-error"></span>
+          <button class="popup__button-save" type="submit">Создать</button>
         </form>
         <button class="popup__button-close" type="button" aria-label="close"></button>
       </div>
