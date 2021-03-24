@@ -19,6 +19,8 @@ const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place
 const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
+//const errorInput = document.querySelector('.popup__input-error');
+//const errorInputActive = document.querySelector('.popup__input-error_active');
 
 
 /* = ФУНКЦИИ = */
@@ -39,7 +41,7 @@ const openPopup = popup => {
 // закрытие popup
 const closePopup = popup => {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', closePressEsc);
+  document.removeEventListener('keydown', closePressEsc);
 };
 
 // закрытие popup клавишей 'Esc'
