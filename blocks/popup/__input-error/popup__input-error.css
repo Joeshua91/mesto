@@ -1,9 +1,8 @@
 .popup__input-error {
-  height: 12px;
+  height: 23px;
   display: block;
-  margin: 5px 0 13px;
+  margin: 5px 0px 2px;
   font-size: 12px;
-  line-height: 15px;
   color: rgba(255, 0, 0, 1);
   box-sizing: border-box;
   transition: opacity 0.3s;
