@@ -51,7 +51,7 @@ const closePressEsc = (evt) => {
 };
 
 // редактирование профиля
-const formEditSubmitHandler = evt => {
+const handleEditFormSubmit = evt => {
   evt.preventDefault();
 
   userName.textContent = nameInput.value;
@@ -61,7 +61,7 @@ const formEditSubmitHandler = evt => {
 };
 
 // добавление карточки
-const formAddSubmitHandler = evt => {
+const handleAddFormSubmit = evt => {
   evt.preventDefault();
 
   renderPlace({
@@ -149,5 +149,5 @@ popupSelector.forEach(item => {
   });
 });
 
-formPopupEdit.addEventListener('submit', formEditSubmitHandler);
-formPopupAdd.addEventListener('submit', formAddSubmitHandler);
+formPopupEdit.addEventListener('submit', handleEditFormSubmit);
+formPopupAdd.addEventListener('submit', handleAddFormSubmit);
