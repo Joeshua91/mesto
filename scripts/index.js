@@ -39,13 +39,13 @@ const initialPlaces = () => {
 };
 
 // открытие popup
-const openPopup = popup => {
+const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePressEsc);
 };
 
 // закрытие popup
-const closePopup = popup => {
+const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePressEsc);
 };
@@ -59,7 +59,7 @@ const closePressEsc = (evt) => {
 };
 
 // редактирование профиля
-const handleEditFormSubmit = evt => {
+const handleEditFormSubmit = (evt) => {
   evt.preventDefault();
 
   userName.textContent = nameInput.value;
@@ -69,7 +69,7 @@ const handleEditFormSubmit = evt => {
 };
 
 // добавление карточки
-const handleAddFormSubmit = evt => {
+const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
 
   renderPlace({
@@ -82,7 +82,7 @@ const handleAddFormSubmit = evt => {
 };
 
 // создание карточки
-const createPlace = item => {
+const createPlace = (item) => {
   const placeCard = templatePlaceCard.content.cloneNode(true);
   const placeCardImage = placeCard.querySelector('.place-card__image');
   const placeCardName = placeCard.querySelector('.place-card__name');
@@ -102,7 +102,7 @@ const createPlace = item => {
 };
 
 // рендеринг карточек
-const renderPlace = item => {
+const renderPlace = (item) => {
   placeSection.prepend(createPlace(item));
 };
 
@@ -117,7 +117,7 @@ const handleDeleteCard = (evt) => {
 }
 
 // показ картинки из карточки
-const handlePreviewPicture = item => {
+const handlePreviewPicture = (item) => {
   viewPlaceCardImage.src = item.link;
   viewPlaceCardImage.alt = item.name;
   viewPlaceCardName.textContent = item.name;
