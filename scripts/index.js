@@ -21,16 +21,13 @@ const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
 
 const popupFormEdit = document.forms['editUser'];
-const inputSelectorFormEdit = popupFormEdit.querySelectorAll('.popup__input');
+const inputsSelectorFormEdit = popupFormEdit.querySelectorAll('.popup__input');
 const errorInputFormEdit = popupFormEdit.querySelector('.popup__input-error');
 
 const popupFormAdd = document.forms['addPlace'];
-const inputSelectorFormAdd = popupFormAdd.querySelectorAll('.popup__input');
+const inputsSelectorFormAdd = popupFormAdd.querySelectorAll('.popup__input');
 const errorInputFormAdd = popupFormAdd.querySelector('.popup__input-error');
-
-//const errorInput = document.querySelector('.popup__input-error');
-//const errorInputActive = document.querySelector('.popup__input-error_active');
-
+const buttonSubmitFormAdd = popupFormAdd.querySelector('.popup__button-save');
 
 /* = ФУНКЦИИ = */
 
@@ -147,18 +144,22 @@ buttonEdit.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   vocationInput.value = userVocation.textContent;
 
-  deleteInputsError(inputSelectorFormEdit, popupFormEdit,
-    '${inputSelectorFormEdit[0].classList[0]}_type_error',
-    '${errorInputFormEdit.classList[0]}_active');
+  deleteInputsError(inputsSelectorFormEdit, popupFormEdit,
+    `${inputsSelectorFormEdit[0].classList[0]}_type_error`,
+    `${errorInputFormEdit.classList[0]}_active`);
 
   openPopup(popupEdit);
 });
 
 buttonAdd.addEventListener('click', () => {
 
-  deleteInputsError(inputSelectorFormAdd, popupFormAdd,
-    '${inputSelectorFormAdd[0].classList[0]}_type_error',
-    '${errorInputFormAdd.classList[0]}_active');
+  deleteInputsError(inputsSelectorFormAdd, popupFormAdd,
+    `${inputsSelectorFormAdd[0].classList[0]}_type_error`,
+    `${errorInputFormAdd.classList[0]}_active`);
+
+
+  buttonSubmitFormAdd.classList.add('popup__button-save_invalid');
+  buttonSubmitFormAdd.setAttribute('disabled', true)
 
   popupFormAdd.reset();
   openPopup(popupAdd);
@@ -178,8 +179,4 @@ popupSelector.forEach(item => {
 });
 
 formPopupEdit.addEventListener('submit', handleEditFormSubmit);
-
 formPopupAdd.addEventListener('submit', handleAddFormSubmit);
-
-
-
