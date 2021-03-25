@@ -26,6 +26,7 @@ const errorInputFormEdit = popupFormEdit.querySelector('.popup__input-error');
 
 const popupFormAdd = document.forms['addPlace'];
 const inputsSelectorFormAdd = popupFormAdd.querySelectorAll('.popup__input');
+const arrinputsFormAdd = Array.from(popupFormAdd.querySelectorAll('.popup__input'))
 const errorInputFormAdd = popupFormAdd.querySelector('.popup__input-error');
 const buttonSubmitFormAdd = popupFormAdd.querySelector('.popup__button-save');
 
@@ -77,7 +78,6 @@ const handleAddFormSubmit = (evt) => {
     link: inputPlaceLink.value,
   });
 
-  formPopupAdd.reset();
   closePopup(popupAdd);
 };
 
@@ -157,11 +157,10 @@ buttonAdd.addEventListener('click', () => {
     `${inputsSelectorFormAdd[0].classList[0]}_type_error`,
     `${errorInputFormAdd.classList[0]}_active`);
 
-
-  buttonSubmitFormAdd.classList.add('popup__button-save_invalid');
-  buttonSubmitFormAdd.setAttribute('disabled', true)
-
   popupFormAdd.reset();
+
+  setButtonState(arrinputsFormAdd, buttonSubmitFormAdd, `${buttonSubmitFormAdd.classList[0]}_invalid`);
+
   openPopup(popupAdd);
 });
 
