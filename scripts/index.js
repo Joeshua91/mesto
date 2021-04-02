@@ -83,6 +83,7 @@ const handleAddFormSubmit = (evt) => {
 
 // создание карточки
 const createPlace = (item) => {
+  //const templatePlaceCard = document.querySelector('.place-template');
   const placeCard = templatePlaceCard.content.cloneNode(true);
   const placeCardImage = placeCard.querySelector('.place-card__image');
   const placeCardName = placeCard.querySelector('.place-card__name');
