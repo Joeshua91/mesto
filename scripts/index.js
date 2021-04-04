@@ -22,6 +22,8 @@ const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
 
+const formArray = Array.from(document.querySelectorAll(validSelector.formSelector));
+
 const popupFormEdit = document.forms['editUser'];
 const inputsSelectorFormEdit = popupFormEdit.querySelectorAll('.popup__input');
 const errorInputFormEdit = popupFormEdit.querySelector('.popup__input-error');
@@ -97,12 +99,20 @@ const renderPlace = (item) => {
   placeSection.prepend(createPlace(item));
 };
 
+// обработать отдельно взятую форму
+formArray.forEach((formElement) => {
+  const formValidator = new FormValidator(validSelector, formElement);
+  formValidator.enableValidation();
+});
+
+/* // переписать код
 // очистка полей ввода с ошибкой
 const deleteInputsError = (inputSelector, popup, inputErrorClass, errorClass) => {
   inputSelector.forEach((item) => {
     hideErrorMessage(popup, item, inputErrorClass, errorClass);
   });
 };
+*/
 
 
 /* = ВЫЗОВЫ ФУНКЦИЙ = */
@@ -113,18 +123,20 @@ initialPlaces();
 /* = ОБРАБОТЧИКИ СОБЫТИЙ = */
 
 buttonEdit.addEventListener('click', () => {
+  // popupFormEdit.reset(); // ???
   nameInput.value = userName.textContent;
   vocationInput.value = userVocation.textContent;
-
-  deleteInputsError(inputsSelectorFormEdit, popupFormEdit,
-    `${inputsSelectorFormEdit[0].classList[0]}_type_error`,
-    `${errorInputFormEdit.classList[0]}_active`);
-
+  /*
+    deleteInputsError(inputsSelectorFormEdit, popupFormEdit,
+      `${inputsSelectorFormEdit[0].classList[0]}_type_error`,
+      `${errorInputFormEdit.classList[0]}_active`);
+  */
   openPopup(popupEdit);
 });
 
 buttonAdd.addEventListener('click', () => {
 
+  /*
   deleteInputsError(inputsSelectorFormAdd, popupFormAdd,
     `${inputsSelectorFormAdd[0].classList[0]}_type_error`,
     `${errorInputFormAdd.classList[0]}_active`);
@@ -132,11 +144,12 @@ buttonAdd.addEventListener('click', () => {
 
   buttonSubmitFormAdd.classList.add('popup__button-save_invalid');
   buttonSubmitFormAdd.setAttribute('disabled', true)
-
+*/
   popupFormAdd.reset();
   openPopup(popupAdd);
 });
 
+// закрытие popup по нажатию на 'крестик'
 closePopupButtons.forEach((item) => {
   item.addEventListener('click', (evt) => {
     closePopup(evt.target.closest('.popup'));
@@ -152,28 +165,3 @@ popupSelector.forEach((item) => {
 
 formPopupEdit.addEventListener('submit', handleEditFormSubmit);
 formPopupAdd.addEventListener('submit', handleAddFormSubmit);
-
-
-
-// То что перенес в Card:
-/*
-// создание карточки
-const createPlace = (item) => {
-  const placeCard = templatePlaceCard.content.cloneNode(true);
-  const placeCardImage = placeCard.querySelector('.place-card__image');
-  const placeCardName = placeCard.querySelector('.place-card__name');
-  const placeCardLike = placeCard.querySelector('.place-card__like');
-  const placeCardDelete = placeCard.querySelector('.place-card__delete');
-
-  placeCardImage.src = item.link;
-  placeCardName.textContent = item.name;
-  placeCardImage.alt = placeCardName.textContent;
-  placeCardLike.addEventListener('click', handleLikeIcon);
-  placeCardDelete.addEventListener('click', handleDeleteCard);
-  placeCardImage.addEventListener('click', () => {
-    handlePreviewPicture(item);
-  });
-
-  return placeCard;
-};
-*/
