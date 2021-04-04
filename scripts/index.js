@@ -1,3 +1,6 @@
+// import Card from './Card.js';
+// import initialCards from './initial-сards.js';
+
 /* = ПЕРЕМЕННЫЕ = */
 
 const popupSelector = document.querySelectorAll('.popup');
@@ -13,7 +16,6 @@ const closePopupButtons = document.querySelectorAll('.popup__button-close');
 const formPopupEdit = document.querySelector('.popup__form_type_edit');
 const formPopupAdd = document.querySelector('.popup__form_type_add');
 const placeSection = document.querySelector('.places__section');
-const templatePlaceCard = document.querySelector('.place-template');
 const inputPlaceTitle = formPopupAdd.querySelector('.popup__input_type_title-place');
 const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place');
 const popupView = document.querySelector('.popup_type_view');
@@ -26,13 +28,13 @@ const errorInputFormEdit = popupFormEdit.querySelector('.popup__input-error');
 
 const popupFormAdd = document.forms['addPlace'];
 const inputsSelectorFormAdd = popupFormAdd.querySelectorAll('.popup__input');
-const arrinputsFormAdd = Array.from(popupFormAdd.querySelectorAll('.popup__input'))
 const errorInputFormAdd = popupFormAdd.querySelector('.popup__input-error');
 const buttonSubmitFormAdd = popupFormAdd.querySelector('.popup__button-save');
 
 /* = ФУНКЦИИ = */
 
 // инициализация карточек
+
 const initialPlaces = () => {
   const initialResults = initialCards.map(createPlace);
 
@@ -46,7 +48,7 @@ const openPopup = (popup) => {
 };
 
 // закрытие popup
-const closePopup = (popup) => {
+const closePopup = popup => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePressEsc);
 };
@@ -78,53 +80,22 @@ const handleAddFormSubmit = (evt) => {
     link: inputPlaceLink.value,
   });
 
+  formPopupAdd.reset();
   closePopup(popupAdd);
 };
 
 // создание карточки
-const createPlace = (item) => {
-  //const templatePlaceCard = document.querySelector('.place-template');
-  const placeCard = templatePlaceCard.content.cloneNode(true);
-  const placeCardImage = placeCard.querySelector('.place-card__image');
-  const placeCardName = placeCard.querySelector('.place-card__name');
-  const placeCardLike = placeCard.querySelector('.place-card__like');
-  const placeCardDelete = placeCard.querySelector('.place-card__delete');
+const createPlace = (data) => {
+  const card = new Card(data, '.place-template');
+  const cardElement = card.createCard();
 
-  placeCardImage.src = item.link;
-  placeCardName.textContent = item.name;
-  placeCardImage.alt = placeCardName.textContent;
-  placeCardLike.addEventListener('click', handleLikeIcon);
-  placeCardDelete.addEventListener('click', handleDeleteCard);
-  placeCardImage.addEventListener('click', () => {
-    handlePreviewPicture(item);
-  });
-
-  return placeCard;
+  return cardElement;
 };
 
 // рендеринг карточек
 const renderPlace = (item) => {
   placeSection.prepend(createPlace(item));
 };
-
-// активация 'лайка'
-const handleLikeIcon = (evt) => {
-  evt.target.classList.toggle('place-card__like_active');
-};
-
-// удаление карточки
-const handleDeleteCard = (evt) => {
-  evt.target.closest('.place-card').remove();
-}
-
-// показ картинки из карточки
-const handlePreviewPicture = (item) => {
-  viewPlaceCardImage.src = item.link;
-  viewPlaceCardImage.alt = item.name;
-  viewPlaceCardName.textContent = item.name;
-
-  openPopup(popupView);
-}
 
 // очистка полей ввода с ошибкой
 const deleteInputsError = (inputSelector, popup, inputErrorClass, errorClass) => {
@@ -158,21 +129,22 @@ buttonAdd.addEventListener('click', () => {
     `${inputsSelectorFormAdd[0].classList[0]}_type_error`,
     `${errorInputFormAdd.classList[0]}_active`);
 
+
+  buttonSubmitFormAdd.classList.add('popup__button-save_invalid');
+  buttonSubmitFormAdd.setAttribute('disabled', true)
+
   popupFormAdd.reset();
-
-  setButtonState(arrinputsFormAdd, buttonSubmitFormAdd, `${buttonSubmitFormAdd.classList[0]}_invalid`);
-
   openPopup(popupAdd);
 });
 
-closePopupButtons.forEach(item => {
+closePopupButtons.forEach((item) => {
   item.addEventListener('click', (evt) => {
     closePopup(evt.target.closest('.popup'));
   });
 });
 
 // закрытие popup по нажатию на overlay
-popupSelector.forEach(item => {
+popupSelector.forEach((item) => {
   item.addEventListener('click', (evt) => {
     closePopup(evt.target);
   });
@@ -180,3 +152,28 @@ popupSelector.forEach(item => {
 
 formPopupEdit.addEventListener('submit', handleEditFormSubmit);
 formPopupAdd.addEventListener('submit', handleAddFormSubmit);
+
+
+
+// То что перенес в Card:
+/*
+// создание карточки
+const createPlace = (item) => {
+  const placeCard = templatePlaceCard.content.cloneNode(true);
+  const placeCardImage = placeCard.querySelector('.place-card__image');
+  const placeCardName = placeCard.querySelector('.place-card__name');
+  const placeCardLike = placeCard.querySelector('.place-card__like');
+  const placeCardDelete = placeCard.querySelector('.place-card__delete');
+
+  placeCardImage.src = item.link;
+  placeCardName.textContent = item.name;
+  placeCardImage.alt = placeCardName.textContent;
+  placeCardLike.addEventListener('click', handleLikeIcon);
+  placeCardDelete.addEventListener('click', handleDeleteCard);
+  placeCardImage.addEventListener('click', () => {
+    handlePreviewPicture(item);
+  });
+
+  return placeCard;
+};
+*/
