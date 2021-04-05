@@ -34,16 +34,16 @@ export class FormValidator {
 
   _setEventListeners() {
     // создать массив полей ввода
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // ??? вынести объявление переменной
     // найти кнопки submit
-    const buttonElement = this._formElement.querySelector(this._buttonSelector);
-
+    const buttonElement = this._formElement.querySelector(this._buttonSelector); // ??? вынести объявление переменной
+/*
     this._formElement.addEventListener('reset', () => {
       inputList.forEach((inputElement) => {
         this._hideErrorMessage(inputElement);
       });
     });
-
+*/
     // обработать отдельно взятое поле ввода
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
@@ -74,7 +74,7 @@ export class FormValidator {
 
   /* = ФУНКЦИЯ СКРЫТИЯ СООБЩЕНИЯ ОБ ОШИБКE = */
   _hideErrorMessage(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`); // ??? вынести объявление переменной
     // СКРЫТЬ сообщение об ошибке
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
@@ -83,7 +83,7 @@ export class FormValidator {
 
   /* = ФУНКЦИЯ ПОКАЗА СООБЩЕНИЯ ОБ ОШИБКE = */
   _showErrorMessage(inputElement, validationMessage) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`); // ??? переменные не должны повторяться - переработать
     // ПОКАЗАТЬ сообщение об ошибке
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
@@ -113,5 +113,21 @@ export class FormValidator {
   /* = ПРОВЕРИТЬ ПУСТЫЕ ЛИ ПОЛЯ ВВОДА = */
   _allInputsEmpty(inputList) {
     return !inputList.some(inputElement => inputElement.value.length > 0);
+  };
+
+  /* = ФУНКЦИЯ ОЧИСТКИ ПОЛЕЙ ВВОДА С ОШИБКОЙ = */
+  deleteInputsError() {
+    // создать массив полей ввода
+    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // ??? переменные не должны повторяться - переработать
+    // найти кнопки submit
+    const buttonElement = this._formElement.querySelector(this._buttonSelector); // ??? переменные не должны повторяться - переработать
+
+    // сделать кнопку НЕАКТИВНОЙ
+    buttonElement.classList.add(this._invalidButtonClass);
+    buttonElement.setAttribute('disabled', true);
+
+    inputList.forEach((inputElement) => {
+      this._hideErrorMessage(inputElement);
+    });
   };
 };
