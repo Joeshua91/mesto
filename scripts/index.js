@@ -27,10 +27,10 @@ const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
 const formArray = Array.from(document.querySelectorAll(validSelector.formSelector));
-
 const popupFormAdd = document.forms['addPlace'];
 const popupFormEdit = document.forms['editUser'];
-
+const formValidatorEdit = new FormValidator(validSelector, popupFormEdit);
+const formValidatorAdd = new FormValidator(validSelector, popupFormAdd);
 
 /* = ФУНКЦИИ = */
 
@@ -115,8 +115,7 @@ buttonEdit.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   vocationInput.value = userVocation.textContent;
 
-  const formValidator = new FormValidator(validSelector, popupFormEdit); // ??? переменные не должны повторяться - переработать
-  formValidator.deleteInputsError(validSelector, popupFormEdit);
+  formValidatorEdit.deleteInputsError(validSelector, popupFormEdit);
 
   openPopup(popupEdit);
 });
@@ -124,8 +123,7 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   popupFormAdd.reset();
 
-  const formValidator = new FormValidator(validSelector, popupFormAdd); // ??? переменные не должны повторяться - переработать
-  formValidator.deleteInputsError(validSelector, popupFormEdit);
+  formValidatorAdd.deleteInputsError(validSelector, popupFormEdit);
 
   openPopup(popupAdd);
 });

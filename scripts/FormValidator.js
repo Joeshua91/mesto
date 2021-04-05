@@ -17,6 +17,8 @@ export class FormValidator {
     this._errorClass = validSelector.errorClass;
 
     this._formElement = formElement;
+    this._inputList = Array.from(formElement.querySelectorAll(this._inputSelector)); // массив полей ввода
+    this._buttonElement = formElement.querySelector(this._buttonSelector); // кнопки submit
   };
 
   /* = ФУНКЦИЯ ВАЛИДАЦИИ ФОРМ = */
@@ -33,28 +35,17 @@ export class FormValidator {
   /* = НАВЕСИТЬ ОБРАБОТЧИКИ ПОЛЯМ ВВОДА = */
 
   _setEventListeners() {
-    // создать массив полей ввода
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // ??? вынести объявление переменной
-    // найти кнопки submit
-    const buttonElement = this._formElement.querySelector(this._buttonSelector); // ??? вынести объявление переменной
-/*
-    this._formElement.addEventListener('reset', () => {
-      inputList.forEach((inputElement) => {
-        this._hideErrorMessage(inputElement);
-      });
-    });
-*/
     // обработать отдельно взятое поле ввода
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         // проверить состояние поле ввода на валидность
         this._checkInputValid(inputElement);
         // переключить состояние кнопки submit
-        this._setButtonState(inputList, buttonElement);
+        this._setButtonState(this._inputList, this._buttonElement);
       });
       // проверить состояние полей
       // и сделать состояние кнопки submit актуальной при загрузке страницы
-      this._setButtonState(inputList, buttonElement);
+      this._setButtonState(this._inputList, this._buttonElement);
     });
   };
 
@@ -74,7 +65,7 @@ export class FormValidator {
 
   /* = ФУНКЦИЯ СКРЫТИЯ СООБЩЕНИЯ ОБ ОШИБКE = */
   _hideErrorMessage(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`); // ??? вынести объявление переменной
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     // СКРЫТЬ сообщение об ошибке
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
@@ -83,7 +74,7 @@ export class FormValidator {
 
   /* = ФУНКЦИЯ ПОКАЗА СООБЩЕНИЯ ОБ ОШИБКE = */
   _showErrorMessage(inputElement, validationMessage) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`); // ??? переменные не должны повторяться - переработать
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     // ПОКАЗАТЬ сообщение об ошибке
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
@@ -95,13 +86,13 @@ export class FormValidator {
     // если хотя бы один input невалидный |или| есть пустые поля
     if (this._hasInvalidInput(inputList) || this._allInputsEmpty(inputList)) {
       // сделать кнопку НЕАКТИВНОЙ
-      buttonElement.classList.add(this._invalidButtonClass);
-      buttonElement.setAttribute('disabled', true);
+      this._buttonElement.classList.add(this._invalidButtonClass);
+      this._buttonElement.setAttribute('disabled', true);
     }
     else {
       // сделать кнопку АКТИВНОЙ
-      buttonElement.classList.remove(this._invalidButtonClass);
-      buttonElement.removeAttribute('disabled');
+      this._buttonElement.classList.remove(this._invalidButtonClass);
+      this._buttonElement.removeAttribute('disabled');
     }
   };
 
@@ -117,16 +108,11 @@ export class FormValidator {
 
   /* = ФУНКЦИЯ ОЧИСТКИ ПОЛЕЙ ВВОДА С ОШИБКОЙ = */
   deleteInputsError() {
-    // создать массив полей ввода
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // ??? переменные не должны повторяться - переработать
-    // найти кнопки submit
-    const buttonElement = this._formElement.querySelector(this._buttonSelector); // ??? переменные не должны повторяться - переработать
-
     // сделать кнопку НЕАКТИВНОЙ
-    buttonElement.classList.add(this._invalidButtonClass);
-    buttonElement.setAttribute('disabled', true);
+    this._buttonElement.classList.add(this._invalidButtonClass);
+    this._buttonElement.setAttribute('disabled', true);
 
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       this._hideErrorMessage(inputElement);
     });
   };
