@@ -1,5 +1,10 @@
-// import Card from './Card.js';
-// import initialCards from './initial-сards.js';
+import { Card } from './Card.js';
+import { initialCards } from './initial-сards.js';
+import {
+  FormValidator,
+  validSelector
+} from './FormValidator.js';
+
 
 /* = ПЕРЕМЕННЫЕ = */
 
@@ -21,22 +26,13 @@ const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place
 const popupView = document.querySelector('.popup_type_view');
 const viewPlaceCardImage = document.querySelector('.popup__image');
 const viewPlaceCardName = document.querySelector('.popup__figcaption');
-
 const formArray = Array.from(document.querySelectorAll(validSelector.formSelector));
-
-const popupFormEdit = document.forms['editUser'];
-const inputsSelectorFormEdit = popupFormEdit.querySelectorAll('.popup__input');
-const errorInputFormEdit = popupFormEdit.querySelector('.popup__input-error');
-
 const popupFormAdd = document.forms['addPlace'];
-const inputsSelectorFormAdd = popupFormAdd.querySelectorAll('.popup__input');
-const errorInputFormAdd = popupFormAdd.querySelector('.popup__input-error');
-const buttonSubmitFormAdd = popupFormAdd.querySelector('.popup__button-save');
+
 
 /* = ФУНКЦИИ = */
 
 // инициализация карточек
-
 const initialPlaces = () => {
   const initialResults = initialCards.map(createPlace);
 
@@ -105,15 +101,6 @@ formArray.forEach((formElement) => {
   formValidator.enableValidation();
 });
 
-/* // переписать код
-// очистка полей ввода с ошибкой
-const deleteInputsError = (inputSelector, popup, inputErrorClass, errorClass) => {
-  inputSelector.forEach((item) => {
-    hideErrorMessage(popup, item, inputErrorClass, errorClass);
-  });
-};
-*/
-
 
 /* = ВЫЗОВЫ ФУНКЦИЙ = */
 
@@ -123,28 +110,13 @@ initialPlaces();
 /* = ОБРАБОТЧИКИ СОБЫТИЙ = */
 
 buttonEdit.addEventListener('click', () => {
-  // popupFormEdit.reset(); // ???
   nameInput.value = userName.textContent;
   vocationInput.value = userVocation.textContent;
-  /*
-    deleteInputsError(inputsSelectorFormEdit, popupFormEdit,
-      `${inputsSelectorFormEdit[0].classList[0]}_type_error`,
-      `${errorInputFormEdit.classList[0]}_active`);
-  */
+
   openPopup(popupEdit);
 });
 
 buttonAdd.addEventListener('click', () => {
-
-  /*
-  deleteInputsError(inputsSelectorFormAdd, popupFormAdd,
-    `${inputsSelectorFormAdd[0].classList[0]}_type_error`,
-    `${errorInputFormAdd.classList[0]}_active`);
-
-
-  buttonSubmitFormAdd.classList.add('popup__button-save_invalid');
-  buttonSubmitFormAdd.setAttribute('disabled', true)
-*/
   popupFormAdd.reset();
   openPopup(popupAdd);
 });
@@ -165,3 +137,10 @@ popupSelector.forEach((item) => {
 
 formPopupEdit.addEventListener('submit', handleEditFormSubmit);
 formPopupAdd.addEventListener('submit', handleAddFormSubmit);
+
+export {
+  viewPlaceCardImage,
+  viewPlaceCardName,
+  openPopup,
+  popupView
+};
