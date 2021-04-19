@@ -1,8 +1,11 @@
 import {
   viewPlaceCardImage,
   viewPlaceCardName,
-  openPopup,
   popupView
+} from '../../scripts/utils/constants.js';
+
+import {
+  openPopup,
 } from '../../pages/index.js';
 
 export class Card {
