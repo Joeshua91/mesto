@@ -3,7 +3,7 @@ import {
   viewPlaceCardName,
   openPopup,
   popupView
-} from './index.js';
+} from '../../pages/index.js';
 
 export class Card {
   constructor(data, cardSelector) {

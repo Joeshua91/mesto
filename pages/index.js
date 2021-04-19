@@ -1,8 +1,8 @@
-import { Card } from './Card.js';
-import { initialCards, validSelector } from '../utils/constants.js';
+import { Card } from '../scripts/components/Card.js';
+import { initialCards, validSelector } from '../scripts/utils/constants.js';
 import {
   FormValidator
-} from './FormValidator.js';
+} from '../scripts/components/FormValidator.js';
 
 
 /* = ПЕРЕМЕННЫЕ = */
