@@ -8,7 +8,7 @@ import {
   openPopup,
 } from '../../pages/index.js';
 
-export class Card {
+export default class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
     this._name = data.name;

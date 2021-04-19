@@ -1,4 +1,4 @@
-import { Card } from '../scripts/components/Card.js';
+
 import {
   initialCards,
   validSelector,
@@ -21,9 +21,9 @@ import {
   popupFormAdd,
   popupFormEdit,
 } from '../scripts/utils/constants.js';
-import {
-  FormValidator
-} from '../scripts/components/FormValidator.js';
+
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
 
 
 const formValidatorEdit = new FormValidator(validSelector, popupFormEdit);
