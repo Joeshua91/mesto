@@ -1,8 +1,7 @@
 import { Card } from './Card.js';
-import { initialCards } from './initial-сards.js';
+import { initialCards, validSelector } from '../utils/constants.js';
 import {
-  FormValidator,
-  validSelector
+  FormValidator
 } from './FormValidator.js';
 
 
