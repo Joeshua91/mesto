@@ -1,14 +1,3 @@
-/*
-import {
-  viewPlaceCardImage,
-  viewPlaceCardName,
-  popupView
-} from '../../scripts/utils/constants.js';
-
-import {
-  openPopup,
-} from '../../pages/index.js';
-*/
 export default class Card {
   constructor(data, cardSelector, { handleCardClick }) {
     this._link = data.link;
@@ -64,17 +53,9 @@ export default class Card {
 
   // Показать картинку из карточки
   _handlePreviewPicture = () => {
-
     this._handleCardClick({
       name: this._title,
       src: this._link
     })
-    /*
-    viewPlaceCardImage.src = this._link;
-    viewPlaceCardImage.alt = this._name;
-    viewPlaceCardName.textContent = this._name;
-
-    openPopup(popupView);
-    */
   };
 };
