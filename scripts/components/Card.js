@@ -1,3 +1,4 @@
+/*
 import {
   viewPlaceCardImage,
   viewPlaceCardName,
@@ -7,12 +8,13 @@ import {
 import {
   openPopup,
 } from '../../pages/index.js';
-
+*/
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   // Клонировать элемент карточки
@@ -46,7 +48,7 @@ export default class Card {
     });
 
     this._item.querySelector('.place-card__image').addEventListener('click', () => {
-      this._handlePreviewPicture(this._link, this._name);
+      this._handlePreviewPicture();
     });
   };
 
@@ -62,10 +64,17 @@ export default class Card {
 
   // Показать картинку из карточки
   _handlePreviewPicture = () => {
+
+    this._handleCardClick({
+      name: this._title,
+      src: this._link
+    })
+    /*
     viewPlaceCardImage.src = this._link;
     viewPlaceCardImage.alt = this._name;
     viewPlaceCardName.textContent = this._name;
 
     openPopup(popupView);
+    */
   };
 };

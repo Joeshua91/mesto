@@ -24,18 +24,51 @@ import {
 
 import Card from '../scripts/components/Card.js';
 import FormValidator from '../scripts/components/FormValidator.js';
+import Section from '../scripts/components/Section.js';
 
 
 const formValidatorEdit = new FormValidator(validSelector, popupFormEdit);
 const formValidatorAdd = new FormValidator(validSelector, popupFormAdd);
 
-/* = ФУНКЦИИ = */
+const section = new Section({
+  items: initialCards,
+  renderer: (data) => {
+    const card = new Card(data, '.place-template', {
+      handleCardClick: (data) => {
+        // прописать открытие popup (PopupWithImage)
+      }
+    })
+    const cardElement = card.createCard()
+    section.addItem(cardElement)
+  }
+}, '.places__section')
 
-// инициализация карточек
+const renderPlace = () => {
+  section.renderItems()
+}
+
+renderPlace()
+
+
+/*
+ // инициализация карточек
 const initialPlaces = () => {
   const initialResults = initialCards.map(createPlace);
 
   placeSection.append(...initialResults);
+};
+
+ // создание карточки
+const createPlace = (data) => {
+  const card = new Card(data, '.place-template');
+  const cardElement = card.createCard();
+
+  return cardElement;
+};
+
+ // рендеринг карточек
+const renderPlace = (item) => {
+  placeSection.prepend(createPlace(item));
 };
 
 // открытие popup
@@ -81,18 +114,7 @@ const handleAddFormSubmit = (evt) => {
   closePopup(popupAdd);
 };
 
-// создание карточки
-const createPlace = (data) => {
-  const card = new Card(data, '.place-template');
-  const cardElement = card.createCard();
 
-  return cardElement;
-};
-
-// рендеринг карточек
-const renderPlace = (item) => {
-  placeSection.prepend(createPlace(item));
-};
 
 // обработать отдельно взятую форму
 formArray.forEach((formElement) => {
@@ -101,12 +123,8 @@ formArray.forEach((formElement) => {
 });
 
 
-/* = ВЫЗОВЫ ФУНКЦИЙ = */
-
 initialPlaces();
 
-
-/* = ОБРАБОТЧИКИ СОБЫТИЙ = */
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = userName.textContent;
