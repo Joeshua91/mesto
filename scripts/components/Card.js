@@ -54,8 +54,8 @@ export default class Card {
   // Показать картинку из карточки
   _handlePreviewPicture = () => {
     this._handleCardClick({
-      name: this._title,
-      src: this._link
+      name: this._name,
+      link: this._link
     })
   };
 };

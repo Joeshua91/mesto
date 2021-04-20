@@ -1,22 +1,6 @@
 import {
   initialCards,
   validSelector,
-  popupSelector,
-  userName,
-  userVocation,
-  buttonEdit,
-  buttonAdd,
-  popupEdit,
-  nameInput,
-  vocationInput,
-  popupAdd,
-  closePopupButtons,
-  formPopupEdit,
-  formPopupAdd,
-  placeSection,
-  inputPlaceTitle,
-  inputPlaceLink,
-  formArray,
   popupFormAdd,
   popupFormEdit,
 } from '../scripts/utils/constants.js';
@@ -24,7 +8,10 @@ import {
 import Card from '../scripts/components/Card.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
 
+const popupWithImage = new PopupWithImage('.popup_type_view');
+popupWithImage.setEventListeners();
 
 const formValidatorEdit = new FormValidator(validSelector, popupFormEdit);
 const formValidatorAdd = new FormValidator(validSelector, popupFormAdd);
@@ -33,11 +20,13 @@ const section = new Section({
   items: initialCards,
   renderer: (data) => {
     const card = new Card(data, '.place-template', {
-      handleCardClick: (data) => {
-        // прописать открытие popup (PopupWithImage)
+        handleCardClick: (item) => {
+        popupWithImage.open(item)
       }
     })
+    // console.log(card)
     const cardElement = card.createCard()
+    // console.log(cardElement)
     section.addItem(cardElement)
   }
 }, '.places__section')

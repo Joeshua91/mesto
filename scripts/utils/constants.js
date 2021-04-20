@@ -51,9 +51,9 @@ const formPopupAdd = document.querySelector('.popup__form_type_add');
 const placeSection = document.querySelector('.places__section');
 const inputPlaceTitle = formPopupAdd.querySelector('.popup__input_type_title-place');
 const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place');
-const popupView = document.querySelector('.popup_type_view');
-const viewPlaceCardImage = document.querySelector('.popup__image');
-const viewPlaceCardName = document.querySelector('.popup__figcaption');
+// const popupView = '.popup_type_view';
+// const viewPlaceCardImage = document.querySelector('.popup__image');
+// const viewPlaceCardName = document.querySelector('.popup__figcaption');
 const formArray = Array.from(document.querySelectorAll(validSelector.formSelector));
 const popupFormAdd = document.forms['addPlace'];
 const popupFormEdit = document.forms['editUser'];
@@ -61,27 +61,6 @@ const popupFormEdit = document.forms['editUser'];
 export {
   initialCards,
   validSelector,
-  initialCards,
-  validSelector,
-  popupSelector,
-  userName,
-  userVocation,
-  buttonEdit,
-  buttonAdd,
-  popupEdit,
-  nameInput,
-  vocationInput,
-  popupAdd,
-  closePopupButtons,
-  formPopupEdit,
-  formPopupAdd,
-  placeSection,
-  inputPlaceTitle,
-  inputPlaceLink,
-  viewPlaceCardImage,
-  viewPlaceCardName,
-  formArray,
   popupFormAdd,
   popupFormEdit,
-  popupView
 }
