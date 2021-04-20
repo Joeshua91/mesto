@@ -20,22 +20,17 @@ const section = new Section({
   items: initialCards,
   renderer: (data) => {
     const card = new Card(data, '.place-template', {
-        handleCardClick: (item) => {
+      handleCardClick: (item) => {
         popupWithImage.open(item)
       }
     })
-    // console.log(card)
     const cardElement = card.createCard()
-    // console.log(cardElement)
     section.addItem(cardElement)
   }
 }, '.places__section')
 
-const renderPlace = () => {
-  section.renderItems()
-}
+section.renderItems()
 
-renderPlace()
 
 
 /*
