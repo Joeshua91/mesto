@@ -15,12 +15,3 @@ export default class PopupWithImage extends Popup {
     this._name.textContent = item.name;
   }
 }
-
-/*
-    viewPlaceCardImage.src = this._link;
-    viewPlaceCardImage.alt = this._name;
-    viewPlaceCardName.textContent = this._name;
-
-    const viewPlaceCardImage = document.querySelector('.popup__image');
-    const viewPlaceCardName = document.querySelector('.popup__figcaption');
-*/
