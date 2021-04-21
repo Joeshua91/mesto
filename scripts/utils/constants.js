@@ -36,22 +36,10 @@ const validSelector = {
 
 /* = ПЕРЕМЕННЫЕ = */
 
-const popupSelector = document.querySelectorAll('.popup');
-const userName = document.querySelector('.user__name');
-const userVocation = document.querySelector('.user__vocation');
 const buttonEdit = document.querySelector('.user__edit');
 const buttonAdd = document.querySelector('.user__add');
-const popupEdit = document.querySelector('.popup_type_edit');
 const nameInput = document.querySelector('.popup__input_type_name');
 const vocationInput = document.querySelector('.popup__input_type_vocation');
-const popupAdd = document.querySelector('.popup_type_add');
-const closePopupButtons = document.querySelectorAll('.popup__button-close');
-const formPopupEdit = document.querySelector('.popup__form_type_edit');
-const formPopupAdd = document.querySelector('.popup__form_type_add');
-const placeSection = document.querySelector('.places__section');
-const inputPlaceTitle = formPopupAdd.querySelector('.popup__input_type_title-place');
-const inputPlaceLink = formPopupAdd.querySelector('.popup__input_type_link-place');
-const formArray = Array.from(document.querySelectorAll(validSelector.formSelector));
 const popupFormAdd = document.forms['addPlace'];
 const popupFormEdit = document.forms['editUser'];
 
