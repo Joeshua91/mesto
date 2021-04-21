@@ -33,7 +33,7 @@ export default class Popup {
   }
 
   // слушатель клика иконке закрытия попапа
-  setEventListeners = () => {
+  setEventListeners() {
     this._popup.addEventListener('click', this._handleClosePopup)
   }
 }

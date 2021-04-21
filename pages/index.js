@@ -3,12 +3,17 @@ import {
   validSelector,
   popupFormAdd,
   popupFormEdit,
+  buttonEdit,
+  nameInput,
+  vocationInput,
 } from '../scripts/utils/constants.js';
 
 import Card from '../scripts/components/Card.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
 
 const popupWithImage = new PopupWithImage('.popup_type_view');
 popupWithImage.setEventListeners();
@@ -29,9 +34,32 @@ const section = new Section({
   }
 }, '.places__section')
 
+const userInfo = new UserInfo({
+  userNameSelector: '.user__name',
+  userVocationSelector: '.user__vocation'
+})
+
+const popupWithFormEdit = new PopupWithForm({
+  popupSelector: '.popup_type_edit',
+  handleFormSubmit: (items) => {
+    userInfo.setUserInfo(items)
+  }
+})
+
+
+
+
 section.renderItems()
 
+popupWithFormEdit.setEventListeners()
 
+buttonEdit.addEventListener('click', () => {
+  nameInput.value = userInfo.getUserInfo().name
+  vocationInput.value = userInfo.getUserInfo().vocation
+  formValidatorEdit.enableValidation()
+  formValidatorEdit.deleteInputsError()
+  popupWithFormEdit.open()
+})
 
 /*
  // инициализация карточек

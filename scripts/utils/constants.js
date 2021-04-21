@@ -60,4 +60,8 @@ export {
   validSelector,
   popupFormAdd,
   popupFormEdit,
+  buttonEdit,
+  nameInput,
+  vocationInput,
+  
 }
