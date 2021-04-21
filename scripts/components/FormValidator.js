@@ -1,13 +1,4 @@
-export const validSelector = {
-  formSelector: '.popup__form', // 'селектор формы
-  inputSelector: '.popup__input', // селектор инпутов
-  buttonSelector: '.popup__button-save', // селектор сабмит-кнопки
-  invalidButtonClass: 'popup__button-save_invalid', // класс для отключенной сабмит-кнопки
-  inputErrorClass: 'popup__input_type_error', // класс для инпута с ошибкой
-  errorClass: 'popup__input-error_active', // класс для самой ошибки под инпутом
-};
-
-export class FormValidator {
+export default class FormValidator {
   constructor(validSelector, formElement) {
     this._formSelector = validSelector.formSelector;
     this._inputSelector = validSelector.inputSelector;

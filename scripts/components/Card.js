@@ -1,15 +1,9 @@
-import {
-  viewPlaceCardImage,
-  viewPlaceCardName,
-  openPopup,
-  popupView
-} from './index.js';
-
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   // Клонировать элемент карточки
@@ -43,7 +37,7 @@ export class Card {
     });
 
     this._item.querySelector('.place-card__image').addEventListener('click', () => {
-      this._handlePreviewPicture(this._link, this._name);
+      this._handlePreviewPicture();
     });
   };
 
@@ -59,10 +53,9 @@ export class Card {
 
   // Показать картинку из карточки
   _handlePreviewPicture = () => {
-    viewPlaceCardImage.src = this._link;
-    viewPlaceCardImage.alt = this._name;
-    viewPlaceCardName.textContent = this._name;
-
-    openPopup(popupView);
+    this._handleCardClick({
+      name: this._name,
+      link: this._link
+    })
   };
 };
