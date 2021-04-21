@@ -16,17 +16,20 @@ export default class PopupWithForm extends Popup {
     return inputValues
   }
 
+  // перезаписать родительский метод и обработчик сабмита формы
   setEventListeners() {
     super.setEventListeners();
     this._formPopup.addEventListener('submit', this._handleSubmit)
   }
 
+  // обработчик сабмита формы
   _handleSubmitForm = (evt) => {
     evt.preventDefault()
     this._handleFormSubmit(this._getInputValues())
     this.close(this._popup)
   }
 
+  // перезаписать родительский метод и сбросить форму при закрытии popup
   close = () => {
     super.close()
     this._formPopup.reset()
