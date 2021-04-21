@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup {
   }
 
   // собрать данные всех полей формы
-  _getInputValues = () => {
+  _getInputValues() {
     const inputValues = {}
     this._inputList.forEach(input => inputValues[input.name] = input.value)
     return inputValues
@@ -23,17 +23,15 @@ export default class PopupWithForm extends Popup {
   }
 
   // обработчик сабмита формы
-  _handleSubmitForm = (evt) => {
+  _handleSubmitForm(evt) {
     evt.preventDefault()
     this._handleFormSubmit(this._getInputValues())
     this.close(this._popup)
   }
 
   // перезаписать родительский метод и сбросить форму при закрытии popup
-  close = () => {
+  close() {
     super.close()
     this._formPopup.reset()
   }
-
-
 }

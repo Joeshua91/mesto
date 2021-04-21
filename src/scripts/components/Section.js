@@ -6,14 +6,14 @@ export default class Section {
   }
 
   // отрисовать каждый отдельный элемент
-  renderItems = () => {
+  renderItems() {
     this._renderedItems.forEach(item => {
       this._renderer(item);
     });
   }
 
   // добавить DOM-элемент в контейнер
-  addItem = (item) => {
+  addItem(item) {
     this._container.prepend(item);
   }
 }

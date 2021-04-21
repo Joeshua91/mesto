@@ -5,7 +5,7 @@ export default class UserInfo {
   }
 
   // вернуть объект с данными пользователя
-  getUserInfo = () => {
+  getUserInfo() {
     return {
       name: this._name.textContent,
       vocation: this._vocation.textContent
@@ -13,7 +13,7 @@ export default class UserInfo {
   }
 
   // принять новые данные пользователя и добавить их на страницу
-  setUserInfo = ({ name, vocation }) => {
+  setUserInfo({ name, vocation }) {
     this._name.textContent = name
     this._vocation.textContent = vocation
   }

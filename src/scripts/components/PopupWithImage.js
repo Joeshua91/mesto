@@ -8,7 +8,7 @@ export default class PopupWithImage extends Popup {
   }
 
   // взять данные картинки при ее показе
-  open = (item) => {
+  open(item) {
     super.open()
     this._image.src = item.link;
     this._image.alt = item.name;
