@@ -1,9 +1,15 @@
 export default class Card {
   constructor(data, cardSelector, { handleCardClick }) {
-    this._link = data.link;
-    this._name = data.name;
-    this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
+    this._link = data.link
+    this._name = data.name
+    this._cardSelector = cardSelector
+    this._handleCardClick = handleCardClick
+
+    this._item = this._getTemplate()
+    this.placedImage = this._item.querySelector('.place-card__image')
+    this.placedName = this._item.querySelector('.place-card__name')
+    this.likedCard = this._item.querySelector('.place-card__like')
+    this.deletedCard = this._item.querySelector('.place-card__delete')
   }
 
   // Клонировать элемент карточки
@@ -15,12 +21,8 @@ export default class Card {
 
   // Создать карточку
   createCard() {
-    this._item = this._getTemplate();
-
-    this._item.querySelector('.place-card__image').src = this._link;
-    this._item.querySelector('.place-card__image').alt = this._name;
-    this._item.querySelector('.place-card__name').textContent = this._name;
-
+    this.placedImage.src = this._link;
+    this.placedName.textContent = this._name;
     this._setEventListeners();
 
     return this._item;
@@ -28,15 +30,15 @@ export default class Card {
 
   // Навесить слушатели событий
   _setEventListeners() {
-    this._item.querySelector('.place-card__like').addEventListener('click', (evt) => {
+    this.likedCard.addEventListener('click', (evt) => {
       this._handleLikeIcon(evt);
     });
 
-    this._item.querySelector('.place-card__delete').addEventListener('click', (evt) => {
+    this.deletedCard.addEventListener('click', (evt) => {
       this._handleDeleteCard(evt);
     });
 
-    this._item.querySelector('.place-card__image').addEventListener('click', () => {
+    this.placedImage.addEventListener('click', () => {
       this._handlePreviewPicture();
     });
   };
