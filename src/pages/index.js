@@ -18,8 +18,8 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 
-const formValidatorEdit = new FormValidator(validSelector, popupFormEdit)
-const formValidatorAdd = new FormValidator(validSelector, popupFormAdd)
+const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
+const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
 
 const popupWithImage = new PopupWithImage('.popup_type_view')
 
@@ -72,17 +72,17 @@ section.renderItems()
 popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
 popupWithFormAdd.setEventListeners()
+formEditProfileValidator.enableValidation()
+formAddCardValidator.enableValidation()
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = userInfo.getUserInfo().name
   vocationInput.value = userInfo.getUserInfo().vocation
-  formValidatorEdit.enableValidation()
-  formValidatorEdit.deleteInputsError()
+  formEditProfileValidator.deleteInputsError()
   popupWithFormEdit.open()
 })
 
 buttonAdd.addEventListener('click', () => {
-  formValidatorAdd.enableValidation()
-  formValidatorAdd.deleteInputsError()
+  formAddCardValidator.deleteInputsError()
   popupWithFormAdd.open()
 })
