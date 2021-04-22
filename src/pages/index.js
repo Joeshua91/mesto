@@ -27,16 +27,20 @@ const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
 
 const popupWithImage = new PopupWithImage('.popup_type_view')
 
+const createCard = (data) => {
+  const card = new Card(data, placeTemplate, {
+    handleCardClick: (item) => {
+      popupWithImage.open(item)
+    }
+  })
+  const cardElement = card.createCard()
+  section.addItem(cardElement)
+}
+
 const section = new Section({
   items: initialCards,
   renderer: (data) => {
-    const card = new Card(data, placeTemplate, {
-      handleCardClick: (item) => {
-        popupWithImage.open(item)
-      }
-    })
-    const cardElement = card.createCard()
-    section.addItem(cardElement)
+    createCard(data)
   }
 }, placeSection)
 
@@ -59,13 +63,7 @@ const popupWithFormAdd = new PopupWithForm({
       name: item['title-place'],
       link: item['link-place'],
     }
-    const card = new Card(data, placeTemplate, {
-      handleCardClick: (item) => {
-        popupWithImage.open(item)
-      }
-    })
-    const cardElement = card.createCard()
-    section.addItem(cardElement)
+    createCard(data)
     popupWithFormAdd.close()
   })
 })
