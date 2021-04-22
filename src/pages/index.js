@@ -9,6 +9,10 @@ import {
   nameInput,
   vocationInput,
   buttonAdd,
+  placeTemplate,
+  placeSection,
+  userName,
+  userVocation,
 } from '../scripts/utils/constants.js';
 
 import Card from '../scripts/components/Card.js';
@@ -26,7 +30,7 @@ const popupWithImage = new PopupWithImage('.popup_type_view')
 const section = new Section({
   items: initialCards,
   renderer: (data) => {
-    const card = new Card(data, '.place-template', {
+    const card = new Card(data, placeTemplate, {
       handleCardClick: (item) => {
         popupWithImage.open(item)
       }
@@ -34,11 +38,11 @@ const section = new Section({
     const cardElement = card.createCard()
     section.addItem(cardElement)
   }
-}, '.places__section')
+}, placeSection)
 
 const userInfo = new UserInfo({
-  userNameSelector: '.user__name',
-  userVocationSelector: '.user__vocation'
+  userNameSelector: userName,
+  userVocationSelector: userVocation
 })
 
 const popupWithFormEdit = new PopupWithForm({
@@ -55,8 +59,7 @@ const popupWithFormAdd = new PopupWithForm({
       name: item['title-place'],
       link: item['link-place'],
     }
-    console.log(data)
-    const card = new Card(data, '.place-template', {
+    const card = new Card(data, placeTemplate, {
       handleCardClick: (item) => {
         popupWithImage.open(item)
       }

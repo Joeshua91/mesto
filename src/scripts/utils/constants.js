@@ -43,6 +43,11 @@ const vocationInput = document.querySelector('.popup__input_type_vocation');
 const popupFormAdd = document.forms['addPlace'];
 const popupFormEdit = document.forms['editUser'];
 
+const placeTemplate = '.place-template';
+const placeSection = '.places__section';
+const userName = '.user__name';
+const userVocation = '.user__vocation';
+
 export {
   initialCards,
   validSelector,
@@ -52,4 +57,8 @@ export {
   nameInput,
   vocationInput,
   buttonAdd,
+  placeTemplate,
+  placeSection,
+  userName,
+  userVocation,
 }
