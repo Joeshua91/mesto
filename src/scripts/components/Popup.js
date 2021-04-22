@@ -20,7 +20,7 @@ export default class Popup {
   // закрытие popup клавишей 'Esc'
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
-      this.close(this._popup)
+      this.close()
     }
   }
 
@@ -28,7 +28,7 @@ export default class Popup {
   _handleClose(evt) {
     if (evt.target.classList.contains('popup__button-close') ||
       evt.target.classList.contains('popup')) {
-      this.close(this._popup)
+      this.close()
     }
   }
 
