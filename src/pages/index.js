@@ -13,6 +13,7 @@ import {
   placeSection,
   userName,
   userVocation,
+  popupView
 } from '../scripts/utils/constants.js';
 
 import Card from '../scripts/components/Card.js';
@@ -25,7 +26,7 @@ import UserInfo from '../scripts/components/UserInfo.js';
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
 
-const popupWithImage = new PopupWithImage('.popup_type_view')
+const popupWithImage = new PopupWithImage(popupView)
 
 const createCard = (data) => {
   const card = new Card(data, placeTemplate, {

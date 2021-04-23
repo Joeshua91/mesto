@@ -47,6 +47,7 @@ const placeTemplate = '.place-template';
 const placeSection = '.places__section';
 const userName = '.user__name';
 const userVocation = '.user__vocation';
+const popupView = '.popup_type_view';
 
 export {
   initialCards,
@@ -61,4 +62,5 @@ export {
   placeSection,
   userName,
   userVocation,
+  popupView
 }
