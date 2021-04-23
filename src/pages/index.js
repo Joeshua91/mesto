@@ -35,13 +35,14 @@ const createCard = (data) => {
     }
   })
   const cardElement = card.createCard()
-  section.addItem(cardElement)
+  return cardElement
 }
 
 const section = new Section({
   items: initialCards,
   renderer: (data) => {
-    createCard(data)
+    const cardElement = createCard(data)
+    section.addItem(cardElement)
   }
 }, placeSection)
 
@@ -64,7 +65,8 @@ const popupWithFormAdd = new PopupWithForm({
       name: item['title-place'],
       link: item['link-place'],
     }
-    createCard(data)
+    const cardElement = createCard(data)
+    section.addItem(cardElement)
     popupWithFormAdd.close()
   })
 })
