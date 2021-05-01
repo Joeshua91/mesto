@@ -16,12 +16,21 @@ import {
   popupView
 } from '../scripts/utils/constants.js';
 
+import Api from '../scripts/components/Api'
 import Card from '../scripts/components/Card.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-23',
+  headers: {
+    authorization: '08704321-7bb1-4c78-b9e1-013c8abb4d8e'
+  }
+})
+
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
