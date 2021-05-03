@@ -34,9 +34,21 @@ const api = new Api({
 })
 
 // получить данные с сервера
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({ name: res.name, vocation: res.about, _id: res._id, avatar: res.avatar })
-})
+api.getUserInfo()
+  .then(res => {
+    userInfo.setUserInfo(
+      {
+        name: res.name,
+        vocation: res.about,
+        _id: res._id,
+        avatar: res.avatar
+      })
+  })
+  .catch(err => {
+    // вывести ошибку в консоль, если данные пользователя не загрузились
+    console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
+  })
+
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
