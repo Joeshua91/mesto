@@ -28,7 +28,7 @@ export default class Api {
       .then(res => {
         // проверить, всё ли в порядке с ответом
         if (res.ok) {
-          console.log(res)
+          //console.log(res)
           return res.json()
         }
         // если ошибка, то отклонить промис

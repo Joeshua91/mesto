@@ -46,15 +46,46 @@ api.getUserInfo()
   })
   .catch(err => {
     // вывести ошибку в консоль, если данные пользователя не загрузились
-    console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
+    console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
   })
-  .finally(() => {
-    api.getInitialCards()
-      .then(res => {
-        console.log(res)
-        // return res.json()
-      })
+
+// получить данные карточек с сервера
+api.getInitialCards()
+  .then(res => {
+    const initialPlacesArr = res.reverse()
+    const section = new Section({
+      items: initialPlacesArr,
+      renderer: (data) => {
+        const cardElement = createCard(data)
+        section.addItem(cardElement)
+      }
+    }, placeSection)
+    section.renderItems()
   })
+  .catch(err => {
+    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
+    const section = new Section({
+      items: initialCards,
+      renderer: (data) => {
+        const cardElement = createCard(data)
+        section.addItem(cardElement)
+      }
+    }, placeSection)
+    section.renderItems()
+  })
+
+/*
+const section = new Section({
+  items: initialCards,
+  renderer: (data) => {
+    const cardElement = createCard(data)
+    section.addItem(cardElement)
+  }
+}, placeSection)
+
+*/
+
+// section.renderItems()
 
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
@@ -71,14 +102,6 @@ const createCard = (data) => {
   const cardElement = card.createCard()
   return cardElement
 }
-
-const section = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    const cardElement = createCard(data)
-    section.addItem(cardElement)
-  }
-}, placeSection)
 
 const userInfo = new UserInfo({
   userNameSelector: userName,
@@ -106,7 +129,7 @@ const popupWithFormAdd = new PopupWithForm({
   })
 })
 
-section.renderItems()
+
 
 popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
