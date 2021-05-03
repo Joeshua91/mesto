@@ -48,6 +48,13 @@ api.getUserInfo()
     // вывести ошибку в консоль, если данные пользователя не загрузились
     console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
   })
+  .finally(() => {
+    api.getInitialCards()
+      .then(res => {
+        console.log(res)
+        // return res.json()
+      })
+  })
 
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
