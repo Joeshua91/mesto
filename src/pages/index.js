@@ -13,6 +13,7 @@ import {
   placeSection,
   userName,
   userVocation,
+  userAvatar,
   popupView
 } from '../scripts/utils/constants.js';
 
@@ -27,10 +28,15 @@ import UserInfo from '../scripts/components/UserInfo.js';
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-23',
   headers: {
-    authorization: '08704321-7bb1-4c78-b9e1-013c8abb4d8e'
+    authorization: '08704321-7bb1-4c78-b9e1-013c8abb4d8e',
+    'content-Type': 'application/json'
   }
 })
 
+// получить данные с сервера
+api.getUserInfo().then((res) => {
+  userInfo.setUserInfo({ name: res.name, vocation: res.about, _id: res._id, avatar: res.avatar })
+})
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
@@ -57,7 +63,8 @@ const section = new Section({
 
 const userInfo = new UserInfo({
   userNameSelector: userName,
-  userVocationSelector: userVocation
+  userVocationSelector: userVocation,
+  userAvatarSelector: userAvatar
 })
 
 const popupWithFormEdit = new PopupWithForm({

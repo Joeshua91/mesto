@@ -47,6 +47,7 @@ const placeTemplate = '.place-template';
 const placeSection = '.places__section';
 const userName = '.user__name';
 const userVocation = '.user__vocation';
+const userAvatar = '.user__avatar';
 const popupView = '.popup_type_view';
 
 export {
@@ -62,5 +63,6 @@ export {
   placeSection,
   userName,
   userVocation,
+  userAvatar,
   popupView
 }
