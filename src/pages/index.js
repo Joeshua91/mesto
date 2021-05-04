@@ -52,9 +52,8 @@ api.getUserInfo()
 // получить данные карточек с сервера
 api.getInitialCards()
   .then(res => {
-    const initialPlacesArr = res.reverse()
     const section = new Section({
-      items: initialPlacesArr,
+      items: res,
       renderer: (data) => {
         const cardElement = createCard(data)
         section.addItem(cardElement)
@@ -63,7 +62,7 @@ api.getInitialCards()
     section.renderItems()
   })
   .catch(err => {
-    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
+    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}. Карточки загружены по умолчанию`)
     const section = new Section({
       items: initialCards,
       renderer: (data) => {
@@ -73,20 +72,6 @@ api.getInitialCards()
     }, placeSection)
     section.renderItems()
   })
-
-/*
-const section = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    const cardElement = createCard(data)
-    section.addItem(cardElement)
-  }
-}, placeSection)
-
-*/
-
-// section.renderItems()
-
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
@@ -124,6 +109,15 @@ const popupWithFormAdd = new PopupWithForm({
       link: item['link-place'],
     }
     const cardElement = createCard(data)
+
+    const section = new Section({
+      items: item,
+      renderer: (data) => {
+        const cardElement = createCard(data)
+        section.addItem(cardElement)
+      }
+    }, placeSection)
+
     section.addItem(cardElement)
     popupWithFormAdd.close()
   })

@@ -16,7 +16,7 @@ export default class Api {
           return res.json()
         }
         // если ошибка, то отклонить промис
-        return Promise.reject(`Ошибка: ${res.status}`)
+        return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
   }
 
@@ -28,19 +28,11 @@ export default class Api {
       .then(res => {
         // проверить, всё ли в порядке с ответом
         if (res.ok) {
-          //console.log(res)
           return res.json()
         }
         // если ошибка, то отклонить промис
-        return Promise.reject(`Ошибка: ${res.status}`)
+        return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
   }
 
 }
-
-/*
-.then(res => res.json())
-  .then((result) => {
-    console.log(result);
-  })
-*/
