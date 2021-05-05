@@ -96,10 +96,24 @@ const userInfo = new UserInfo({
 
 const popupWithFormEdit = new PopupWithForm({
   popupSelector: '.popup_type_edit',
-  handleFormSubmit: (items) => {
-    userInfo.setUserInfo(items)
+  handleFormSubmit: (data) => {
+    api.editUserInfo({
+      name: data.name,
+      vocation: data.vocation })
+      .then(res => {
+        userInfo.setUserInfo({
+          name: res.name,
+          vocation: res.about,
+          _id: res._id
+        })
+      })
+      .catch(err => {
+        console.log(`Ошибка: ${err}.`)
+      })
+
   }
 })
+
 
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',

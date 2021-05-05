@@ -1,3 +1,5 @@
+// import { data } from "autoprefixer"
+
 export default class Api {
   constructor({ url, headers }) {
     this._url = url
@@ -33,6 +35,27 @@ export default class Api {
         // если ошибка, то отклонить промис
         return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
+  }
+
+  // редактировать профиль
+  editUserInfo(data) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: `${data.name}`,
+        about: `${data.vocation}`
+      })
+    })
+      .then(res => {
+        // проверить, всё ли в порядке с ответом
+        if (res.ok) {
+          return res.json()
+        }
+        // если ошибка, то отклонить промис
+        return Promise.reject(`Произошла ошибка: ${res.status}`)
+      })
+
   }
 
 }
