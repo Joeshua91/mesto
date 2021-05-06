@@ -75,3 +75,12 @@
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__figcaption/popup__figcaption.css);
+
+/* popup Delete */
+
+@import url(../blocks/popup/__form/_type/_confirm/popup__form_type_confirm.css);
+@import url(../blocks/popup/__button-confirm/popup__button-confirm.css);
+
+/*
+@import url(..);
+*/
