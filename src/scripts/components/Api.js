@@ -55,7 +55,26 @@ export default class Api {
         // если ошибка, то отклонить промис
         return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
+  }
 
+  // добавить карточку
+  addCard(data) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: `${data.name}`,
+        link: `${data.link}`
+      })
+    })
+      .then(res => {
+        // проверить, всё ли в порядке с ответом
+        if (res.ok) {
+          return res.json()
+        }
+        // если ошибка, то отклонить промис
+        return Promise.reject(`Произошла ошибка: ${res.status}`)
+      })
   }
 
 }

@@ -99,7 +99,8 @@ const popupWithFormEdit = new PopupWithForm({
   handleFormSubmit: (data) => {
     api.editUserInfo({
       name: data.name,
-      vocation: data.vocation })
+      vocation: data.vocation
+    })
       .then(res => {
         userInfo.setUserInfo({
           name: res.name,
@@ -114,7 +115,21 @@ const popupWithFormEdit = new PopupWithForm({
   }
 })
 
+/*
+const popupWithFormAdd = new PopupWithForm({
+  popupSelector: '.popup_type_add',
+  handleFormSubmit: (item => {
+    api.addCard({
+      name: data.name,
+      link: data.link
+    })
+      .then(res => {
 
+      })
+  })
+})
+*/
+// переделать
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: (item => {
