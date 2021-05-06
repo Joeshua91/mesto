@@ -24,6 +24,7 @@
 
 @import url(../blocks/user/user.css);
 @import url(../blocks/user/__wrapper/user__wrapper.css);
+@import url(../blocks/user/__edit-avatar/user__edit-avatar.css);
 @import url(../blocks/user/__avatar/user__avatar.css);
 @import url(../blocks/user/__info/user__info.css);
 @import url(../blocks/user/__text/user__text.css);
