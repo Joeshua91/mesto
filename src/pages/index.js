@@ -53,7 +53,7 @@ api.getUserInfo()
 api.getInitialCards()
   .then(res => {
     const section = new Section({
-      items: res,
+      items: /*res*/s,
       renderer: (data) => {
         const cardElement = createCard(data)
         section.addItem(cardElement)
