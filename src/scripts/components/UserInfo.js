@@ -10,15 +10,21 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: this._name.textContent,
-      vocation: this._vocation.textContent
+      vocation: this._vocation.textContent,
+      _id: this._id,
+      avatar: this._avatar
     }
   }
 
   // принять новые данные пользователя и добавить их на страницу
-  setUserInfo({ name, vocation, _id, avatar }) {
+  setUserInfo({ name, vocation, _id, }) {
     this._name.textContent = name
     this._vocation.textContent = vocation
     this._id = _id
+  }
+
+  // принять новый аватар и добавить его на страницу
+  setUserAvatar({ avatar }) {
     this._avatar.style.backgroundImage = `url(${avatar})`
   }
 }

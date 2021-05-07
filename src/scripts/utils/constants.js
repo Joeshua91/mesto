@@ -38,10 +38,12 @@ const validSelector = {
 
 const buttonEdit = document.querySelector('.user__edit');
 const buttonAdd = document.querySelector('.user__add');
+const buttonAvatar = document.querySelector('.user__edit-avatar')
 const nameInput = document.querySelector('.popup__input_type_name');
 const vocationInput = document.querySelector('.popup__input_type_vocation');
 const popupFormAdd = document.forms['addPlace'];
 const popupFormEdit = document.forms['editUser'];
+const popupFormAvatar = document.forms['editAvatar'];
 
 const placeTemplate = '.place-template';
 const placeSection = '.places__section';
@@ -64,5 +66,7 @@ export {
   userName,
   userVocation,
   userAvatar,
-  popupView
+  popupView,
+  buttonAvatar,
+  popupFormAvatar,
 }

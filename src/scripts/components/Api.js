@@ -28,11 +28,9 @@ export default class Api {
       headers: this._headers
     })
       .then(res => {
-        // проверить, всё ли в порядке с ответом
         if (res.ok) {
           return res.json()
         }
-        // если ошибка, то отклонить промис
         return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
   }
@@ -48,11 +46,26 @@ export default class Api {
       })
     })
       .then(res => {
-        // проверить, всё ли в порядке с ответом
         if (res.ok) {
           return res.json()
         }
-        // если ошибка, то отклонить промис
+        return Promise.reject(`Произошла ошибка: ${res.status}`)
+      })
+  }
+
+  // сменить аватар
+  editUserAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: `${data.avatar}`
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
         return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
   }
@@ -68,13 +81,13 @@ export default class Api {
       })
     })
       .then(res => {
-        // проверить, всё ли в порядке с ответом
         if (res.ok) {
           return res.json()
         }
-        // если ошибка, то отклонить промис
         return Promise.reject(`Произошла ошибка: ${res.status}`)
       })
   }
+
+
 
 }

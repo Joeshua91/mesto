@@ -14,7 +14,9 @@ import {
   userName,
   userVocation,
   userAvatar,
-  popupView
+  popupView,
+  buttonAvatar,
+  popupFormAvatar,
 } from '../scripts/utils/constants.js';
 
 import Api from '../scripts/components/Api'
@@ -53,7 +55,7 @@ api.getUserInfo()
 api.getInitialCards()
   .then(res => {
     const section = new Section({
-      items: /*res*/s,
+      items: res,
       renderer: (data) => {
         const cardElement = createCard(data)
         section.addItem(cardElement)
@@ -75,6 +77,7 @@ api.getInitialCards()
 
 const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
 const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
+const formAvatarValidator = new FormValidator(validSelector, popupFormAvatar)
 
 const popupWithImage = new PopupWithImage(popupView)
 
@@ -115,6 +118,25 @@ const popupWithFormEdit = new PopupWithForm({
   }
 })
 
+const popupWithFormAvatar = new PopupWithForm({
+  popupSelector: '.popup_type_avatar',
+  handleFormSubmit: (data => {
+    api.editUserAvatar({
+      avatar: data.avatar,
+    })
+      .then(res => {
+        userInfo.setUserAvatar({
+          avatar: res.avatar,
+        })
+      })
+      .catch(err => {
+        console.log(`Ошибка: ${err}.`)
+      })
+
+  })
+})
+
+
 /*
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',
@@ -154,11 +176,14 @@ const popupWithFormAdd = new PopupWithForm({
 
 
 
+
 popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
 popupWithFormAdd.setEventListeners()
+popupWithFormAvatar.setEventListeners()
 formEditProfileValidator.enableValidation()
 formAddCardValidator.enableValidation()
+formAvatarValidator.enableValidation()
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = userInfo.getUserInfo().name
@@ -170,4 +195,9 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   formAddCardValidator.deleteInputsError()
   popupWithFormAdd.open()
+})
+
+buttonAvatar.addEventListener('click', () => {
+  formAvatarValidator.deleteInputsError()
+  popupWithFormAvatar.open()
 })
