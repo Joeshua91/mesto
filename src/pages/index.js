@@ -26,6 +26,7 @@ import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
+import PopupWithFormConfirm from '../scripts/components/PopupWithFormConfirm.js'
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-23',
@@ -33,6 +34,12 @@ const api = new Api({
     authorization: '08704321-7bb1-4c78-b9e1-013c8abb4d8e',
     'content-Type': 'application/json'
   }
+})
+
+const userInfo = new UserInfo({
+  userNameSelector: userName,
+  userVocationSelector: userVocation,
+  userAvatarSelector: userAvatar
 })
 
 // получить данные с сервера
@@ -95,17 +102,10 @@ const createCard = (data) => {
           console.log(`Ошибка: ${err}.`)
         })
     }
-
-  })
+  }, popupWithFormConfirm, userInfo.getUserInfo()._id)
   const cardElement = card.createCard()
   return cardElement
 }
-
-const userInfo = new UserInfo({
-  userNameSelector: userName,
-  userVocationSelector: userVocation,
-  userAvatarSelector: userAvatar
-})
 
 const popupWithFormEdit = new PopupWithForm({
   popupSelector: '.popup_type_edit',
@@ -169,6 +169,21 @@ const popupWithFormAdd = new PopupWithForm({
   })
 })
 
+const popupWithFormConfirm = new PopupWithFormConfirm({
+  popupSelector: '.popup_type_confirm',
+  handleFormSubmit: ({ item, id }) => {
+    api.deleteCard(id)
+      .then(() => {
+        item.remove()
+      })
+      .then(() => {
+        popupWithFormConfirm.close()
+      })
+      .catch(err => {
+        console.log(`Не удалось удалить карточку. Ошибка: ${err}.`)
+      })
+  }
+})
 
 // переделать
 /*
@@ -201,6 +216,7 @@ popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
 popupWithFormAdd.setEventListeners()
 popupWithFormAvatar.setEventListeners()
+popupWithFormConfirm.setEventListeners()
 formEditProfileValidator.enableValidation()
 formAddCardValidator.enableValidation()
 formAvatarValidator.enableValidation()

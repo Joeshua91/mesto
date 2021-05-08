@@ -1,5 +1,6 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick, handleCardLike }) {
+  constructor(data, cardSelector, { handleCardClick, handleCardLike },
+    popupWithFormConfirm, userInfo) {
     this._link = data.link
     this._name = data.name
     this._id = data._id
@@ -17,6 +18,9 @@ export default class Card {
     this.likedCardCount = this._item.querySelector('.place-card__like-count')
     this.likedCardActive = 'place-card__like_active'
     this.deletedCard = this._item.querySelector('.place-card__delete')
+
+    this._popupWithFormConfirm = popupWithFormConfirm
+    this._userId = userInfo
   }
 
   // Клонировать элемент карточки
@@ -32,6 +36,17 @@ export default class Card {
     this.placedName.textContent = this._name;
     this.likedCardCount.textContent = this._likes
     this._setEventListeners();
+
+/*
+    if (this._owner._id === this._userId) {
+      this.deletedCard.remove()
+    }
+
+    /*
+    if (!(this._data.owner._id === this._userId)) {
+      this._elementCardDelete.remove();
+    }
+    */
 
     return this._item;
   };
@@ -63,8 +78,11 @@ export default class Card {
   };
 
   // Добавить возможность удалять карточку
-  _handleDeleteCard(evt) {
-    evt.target.closest('.place-card').remove();
+  _handleDeleteCard() {
+    this._popupWithFormConfirm.open({
+      item: this._item,
+      id: this._id
+    })
   };
 
   // Показать картинку из карточки
