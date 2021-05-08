@@ -51,6 +51,10 @@ const userName = '.user__name';
 const userVocation = '.user__vocation';
 const userAvatar = '.user__avatar';
 const popupView = '.popup_type_view';
+const popuEdit = '.popup_type_edit';
+const popupAvatar = '.popup_type_avatar';
+const popupAdd = '.popup_type_add';
+const popupConfirm = '.popup_type_confirm';
 
 export {
   initialCards,
@@ -67,6 +71,10 @@ export {
   userVocation,
   userAvatar,
   popupView,
+  popuEdit,
+  popupAvatar,
   buttonAvatar,
   popupFormAvatar,
+  popupAdd,
+  popupConfirm,
 }

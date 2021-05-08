@@ -15,8 +15,12 @@ import {
   userVocation,
   userAvatar,
   popupView,
+  popuEdit,
+  popupAvatar,
   buttonAvatar,
   popupFormAvatar,
+  popupAdd,
+  popupConfirm
 } from '../scripts/utils/constants.js';
 
 import Api from '../scripts/components/Api'
@@ -68,7 +72,7 @@ const createCard = (data) => {
 }
 
 const popupWithFormEdit = new PopupWithForm({
-  popupSelector: '.popup_type_edit',
+  popupSelector: popuEdit,
   handleFormSubmit: (data) => {
     api.editUserInfo({
       name: data.name,
@@ -89,7 +93,7 @@ const popupWithFormEdit = new PopupWithForm({
 })
 
 const popupWithFormAvatar = new PopupWithForm({
-  popupSelector: '.popup_type_avatar',
+  popupSelector: popupAvatar,
   handleFormSubmit: (data => {
     api.editUserAvatar({
       avatar: data.avatar,
@@ -107,7 +111,7 @@ const popupWithFormAvatar = new PopupWithForm({
 })
 
 const popupWithFormAdd = new PopupWithForm({
-  popupSelector: '.popup_type_add',
+  popupSelector: popupAdd,
   handleFormSubmit: (data => {
     api.addCard({
       name: data['title-place'],
@@ -130,7 +134,7 @@ const popupWithFormAdd = new PopupWithForm({
 })
 
 const popupWithFormConfirm = new PopupWithFormConfirm({
-  popupSelector: '.popup_type_confirm',
+  popupSelector: popupConfirm,
   handleFormSubmit: ({ item, id }) => {
     api.deleteCard(id)
       .then(() => {
