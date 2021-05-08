@@ -4,7 +4,7 @@ export default class Card {
     this._link = data.link
     this._name = data.name
     this._id = data._id
-    this._likes = data.likes.length
+    this._likes = data.likes
     this._owner = data.owner
 
     this._cardSelector = cardSelector
@@ -34,11 +34,15 @@ export default class Card {
   createCard() {
     this.placedImage.src = this._link;
     this.placedName.textContent = this._name;
-    this.likedCardCount.textContent = this._likes
+    this.likedCardCount.textContent = this._likes.length
     this._setEventListeners();
 
     if (this._owner._id != this._userId) {
       this.deletedCard.remove()
+    }
+
+    if (this._likes.filter(item => item._id === this._userId).length > 0) {
+      this.likedCard.classList.add(this.likedCardActive)
     }
 
     return this._item;
