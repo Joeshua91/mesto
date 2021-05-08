@@ -15,6 +15,7 @@ export default class Card {
     this.placedName = this._item.querySelector('.place-card__name')
     this.likedCard = this._item.querySelector('.place-card__like')
     this.likedCardCount = this._item.querySelector('.place-card__like-count')
+    this.likedCardActive = 'place-card__like_active'
     this.deletedCard = this._item.querySelector('.place-card__delete')
   }
 
@@ -51,8 +52,14 @@ export default class Card {
   };
 
   // Добавить возможность ставить отметку "Нравится"
-  _handleLikeIcon(evt) {
-    evt.target.classList.toggle('place-card__like_active');
+  _handleLikeIcon() {
+    if (this.likedCard.classList.contains(this.likedCardActive)) {
+      this._handleCardLike('DELETE', this._id, this.likedCardCount)
+      this.likedCard.classList.remove(this.likedCardActive)
+    } else {
+      this._handleCardLike('PUT', this._id, this.likedCardCount)
+      this.likedCard.classList.add(this.likedCardActive)
+    }
   };
 
   // Добавить возможность удалять карточку

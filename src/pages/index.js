@@ -85,6 +85,15 @@ const createCard = (data) => {
   const card = new Card(data, placeTemplate, {
     handleCardClick: (item) => {
       popupWithImage.open(item)
+    },
+    handleCardLike: (method, id, likedCardCount) => {
+      api.likedCard(method, id)
+        .then(data => {
+          likedCardCount.textContent = data.likes.length
+        })
+        .catch(err => {
+          console.log(`Ошибка: ${err}.`)
+        })
     }
 
   })
@@ -136,8 +145,6 @@ const popupWithFormAvatar = new PopupWithForm({
 
   })
 })
-
-
 
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',
