@@ -20,7 +20,8 @@ import {
   buttonAvatar,
   popupFormAvatar,
   popupAdd,
-  popupConfirm
+  popupConfirm,
+  popupFormConfirm
 } from '../scripts/utils/constants.js';
 
 import Api from '../scripts/components/Api'
@@ -74,6 +75,7 @@ const createCard = (data) => {
 const popupWithFormEdit = new PopupWithForm({
   popupSelector: popuEdit,
   handleFormSubmit: (data) => {
+    loading(popupFormAdd, true)
     api.editUserInfo({
       name: data.name,
       vocation: data.vocation
@@ -88,13 +90,14 @@ const popupWithFormEdit = new PopupWithForm({
       .catch(err => {
         console.log(`Ошибка: ${err}.`)
       })
-
+      .finally(loading(popupFormAdd, false))
   }
 })
 
 const popupWithFormAvatar = new PopupWithForm({
   popupSelector: popupAvatar,
   handleFormSubmit: (data => {
+    loading(popupFormAvatar, true)
     api.editUserAvatar({
       avatar: data.avatar,
     })
@@ -106,13 +109,14 @@ const popupWithFormAvatar = new PopupWithForm({
       .catch(err => {
         console.log(`Ошибка: ${err}.`)
       })
-
+      .finally(loading(popupFormAvatar, false))
   })
 })
 
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: popupAdd,
   handleFormSubmit: (data => {
+    loading(popupFormAdd, true)
     api.addCard({
       name: data['title-place'],
       link: data['link-place']
@@ -130,12 +134,14 @@ const popupWithFormAdd = new PopupWithForm({
       .catch(err => {
         console.log(`Ошибка: ${err}.`)
       })
+      .finally(loading(popupFormAdd, false))
   })
 })
 
 const popupWithFormConfirm = new PopupWithFormConfirm({
   popupSelector: popupConfirm,
   handleFormSubmit: ({ item, id }) => {
+    loading(popupFormConfirm, true)
     api.deleteCard(id)
       .then(() => {
         item.remove()
@@ -146,8 +152,18 @@ const popupWithFormConfirm = new PopupWithFormConfirm({
       .catch(err => {
         console.log(`Не удалось удалить карточку. Ошибка: ${err}.`)
       })
+      .finally(loading(popupFormConfirm, false))
   }
 })
+
+const loading = (popup, save) => {
+  const buttonSave = popup.querySelector('.popup__button-save')
+  if (save) {
+    buttonSave.textContent = 'Сохранение...'
+  } else {
+    buttonSave.textContent = 'Сохранение'
+  }
+}
 
 popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
