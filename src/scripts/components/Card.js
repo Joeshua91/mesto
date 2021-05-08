@@ -5,7 +5,7 @@ export default class Card {
     this._name = data.name
     this._id = data._id
     this._likes = data.likes.length
-    this._owner = data._owner
+    this._owner = data.owner
 
     this._cardSelector = cardSelector
     this._handleCardClick = handleCardClick
@@ -37,16 +37,9 @@ export default class Card {
     this.likedCardCount.textContent = this._likes
     this._setEventListeners();
 
-/*
-    if (this._owner._id === this._userId) {
+    if (this._owner._id != this._userId) {
       this.deletedCard.remove()
     }
-
-    /*
-    if (!(this._data.owner._id === this._userId)) {
-      this._elementCardDelete.remove();
-    }
-    */
 
     return this._item;
   };
