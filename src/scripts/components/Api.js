@@ -6,20 +6,22 @@ export default class Api {
     this._headers = headers
   }
 
+  _fixPromise(res) {
+    // проверить, всё ли в порядке с ответом
+    if (res.ok) {
+      return res.json()
+    }
+    // если ошибка, то отклонить промис
+    return Promise.reject(`Произошла ошибка: ${res.status}`)
+  }
+
   // получить данные пользователя с сервера
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
-      .then(res => {
-        // проверить, всё ли в порядке с ответом
-        if (res.ok) {
-          return res.json()
-        }
-        // если ошибка, то отклонить промис
-        return Promise.reject(`Произошла ошибка: ${res.status}`)
-      })
+      .then(res => this._fixPromise(res))
   }
 
   getInitialCards() {
@@ -27,12 +29,7 @@ export default class Api {
       method: 'GET',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Произошла ошибка: ${res.status}`)
-      })
+      .then(res => this._fixPromise(res))
   }
 
   // редактировать профиль
@@ -45,12 +42,7 @@ export default class Api {
         about: `${data.vocation}`
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Произошла ошибка: ${res.status}`)
-      })
+      .then(res => this._fixPromise(res))
   }
 
   // сменить аватар
@@ -62,12 +54,7 @@ export default class Api {
         avatar: `${data.avatar}`
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Произошла ошибка: ${res.status}`)
-      })
+      .then(res => this._fixPromise(res))
   }
 
   // добавить карточку
@@ -80,12 +67,7 @@ export default class Api {
         link: `${data.link}`
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Произошла ошибка: ${res.status}`)
-      })
+      .then(res => this._fixPromise(res))
   }
 
   likedCard(method, id) {
@@ -93,12 +75,6 @@ export default class Api {
       method: method,
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Произошла ошибка: ${res.status}`)
-    })
+      .then(res => this._fixPromise(res))
   }
-
 }
