@@ -86,6 +86,7 @@ const createCard = (data) => {
     handleCardClick: (item) => {
       popupWithImage.open(item)
     }
+
   })
   const cardElement = card.createCard()
   return cardElement
@@ -137,21 +138,33 @@ const popupWithFormAvatar = new PopupWithForm({
 })
 
 
-/*
+
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',
-  handleFormSubmit: (item => {
+  handleFormSubmit: (data => {
     api.addCard({
-      name: data.name,
-      link: data.link
+      name: data['title-place'],
+      link: data['link-place']
     })
       .then(res => {
-
+        const section = new Section({
+          items: res,
+          renderer: (data) => {
+            const cardElement = createCard(data)
+            section.addItem(cardElement)
+          }
+        }, placeSection)
+        section.addItem(cardElement)
+      })
+      .catch(err => {
+        console.log(`Ошибка: ${err}.`)
       })
   })
 })
-*/
+
+
 // переделать
+/*
 const popupWithFormAdd = new PopupWithForm({
   popupSelector: '.popup_type_add',
   handleFormSubmit: (item => {
@@ -174,7 +187,7 @@ const popupWithFormAdd = new PopupWithForm({
   })
 })
 
-
+*/
 
 
 popupWithImage.setEventListeners()

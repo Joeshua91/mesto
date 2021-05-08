@@ -1,18 +1,20 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick }) {
+  constructor(data, cardSelector, { handleCardClick, handleCardLike }) {
     this._link = data.link
     this._name = data.name
     this._id = data._id
-    this._likes = data.likes
+    this._likes = data.likes.length
     this._owner = data._owner
 
     this._cardSelector = cardSelector
     this._handleCardClick = handleCardClick
+    this._handleCardLike = handleCardLike
 
     this._item = this._getTemplate()
     this.placedImage = this._item.querySelector('.place-card__image')
     this.placedName = this._item.querySelector('.place-card__name')
     this.likedCard = this._item.querySelector('.place-card__like')
+    this.likedCardCount = this._item.querySelector('.place-card__like-count')
     this.deletedCard = this._item.querySelector('.place-card__delete')
   }
 
@@ -27,6 +29,7 @@ export default class Card {
   createCard() {
     this.placedImage.src = this._link;
     this.placedName.textContent = this._name;
+    this.likedCardCount.textContent = this._likes
     this._setEventListeners();
 
     return this._item;

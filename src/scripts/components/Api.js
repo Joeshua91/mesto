@@ -72,7 +72,7 @@ export default class Api {
 
   // добавить карточку
   addCard(data) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -88,6 +88,17 @@ export default class Api {
       })
   }
 
-
+  likedCard(method, id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: method,
+      headers: this._headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject(`Произошла ошибка: ${res.status}`)
+    })
+  }
 
 }
