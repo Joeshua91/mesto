@@ -21,12 +21,18 @@ import {
 
 import Api from '../scripts/components/Api'
 import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import FormValidator from '../scripts/components/FormValidator.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import UserInfo from '../scripts/components/UserInfo.js';
 import PopupWithFormConfirm from '../scripts/components/PopupWithFormConfirm.js'
+
+const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
+const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
+const formAvatarValidator = new FormValidator(validSelector, popupFormAvatar)
+
+const popupWithImage = new PopupWithImage(popupView)
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-23',
@@ -41,52 +47,6 @@ const userInfo = new UserInfo({
   userVocationSelector: userVocation,
   userAvatarSelector: userAvatar
 })
-
-// получить данные с сервера
-api.getUserInfo()
-  .then(res => {
-    userInfo.setUserInfo(
-      {
-        name: res.name,
-        vocation: res.about,
-        _id: res._id,
-        avatar: res.avatar
-      })
-  })
-  .catch(err => {
-    // вывести ошибку в консоль, если данные пользователя не загрузились
-    console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
-  })
-
-// получить данные карточек с сервера
-api.getInitialCards()
-  .then(res => {
-    const section = new Section({
-      items: res,
-      renderer: (data) => {
-        const cardElement = createCard(data)
-        section.addItem(cardElement)
-      }
-    }, placeSection)
-    section.renderItems()
-  })
-  .catch(err => {
-    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}. Карточки загружены по умолчанию`)
-    const section = new Section({
-      items: initialCards,
-      renderer: (data) => {
-        const cardElement = createCard(data)
-        section.addItem(cardElement)
-      }
-    }, placeSection)
-    section.renderItems()
-  })
-
-const formEditProfileValidator = new FormValidator(validSelector, popupFormEdit)
-const formAddCardValidator = new FormValidator(validSelector, popupFormAdd)
-const formAvatarValidator = new FormValidator(validSelector, popupFormAvatar)
-
-const popupWithImage = new PopupWithImage(popupView)
 
 const createCard = (data) => {
   const card = new Card(data, placeTemplate, {
@@ -185,33 +145,6 @@ const popupWithFormConfirm = new PopupWithFormConfirm({
   }
 })
 
-// переделать
-/*
-const popupWithFormAdd = new PopupWithForm({
-  popupSelector: '.popup_type_add',
-  handleFormSubmit: (item => {
-    const data = {
-      name: item['title-place'],
-      link: item['link-place'],
-    }
-    const cardElement = createCard(data)
-
-    const section = new Section({
-      items: item,
-      renderer: (data) => {
-        const cardElement = createCard(data)
-        section.addItem(cardElement)
-      }
-    }, placeSection)
-
-    section.addItem(cardElement)
-    popupWithFormAdd.close()
-  })
-})
-
-*/
-
-
 popupWithImage.setEventListeners()
 popupWithFormEdit.setEventListeners()
 popupWithFormAdd.setEventListeners()
@@ -237,3 +170,42 @@ buttonAvatar.addEventListener('click', () => {
   formAvatarValidator.deleteInputsError()
   popupWithFormAvatar.open()
 })
+
+// получить данные с сервера
+api.getUserInfo()
+  .then(res => {
+    userInfo.setUserInfo(
+      {
+        name: res.name,
+        vocation: res.about,
+        _id: res._id,
+        avatar: res.avatar
+      })
+  })
+  .catch(err => {
+    console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
+  })
+
+// получить данные карточек с сервера
+api.getInitialCards()
+  .then(res => {
+    const section = new Section({
+      items: res,
+      renderer: (data) => {
+        const cardElement = createCard(data)
+        section.addItem(cardElement)
+      }
+    }, placeSection)
+    section.renderItems()
+  })
+  .catch(err => {
+    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}. Карточки загружены по умолчанию`)
+    const section = new Section({
+      items: initialCards,
+      renderer: (data) => {
+        const cardElement = createCard(data)
+        section.addItem(cardElement)
+      }
+    }, placeSection)
+    section.renderItems()
+  })
