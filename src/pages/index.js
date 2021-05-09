@@ -129,10 +129,10 @@ const popupWithFormAdd = new PopupWithForm({
             section.addItem(cardElement)
           }
         }, placeSection)
-        section.addItem(cardElement)
+        section.renderCard()
       })
       .catch(err => {
-        console.log(`Ошибка: ${err}.`)
+        console.log(`Не удалось загрузить карточки. Ошибка: ${err}.`)
       })
       .finally(loading(popupFormAdd, false))
   })
