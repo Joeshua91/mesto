@@ -13,6 +13,6 @@ export default class PopupWithFormConfirm extends PopupWithForm {
   _handleSubmitForm(evt) {
     evt.preventDefault()
     this._handleFormSubmit(this._item)
-    super.close()
+    //super.close()
   }
 }

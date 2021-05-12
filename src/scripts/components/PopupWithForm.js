@@ -26,7 +26,6 @@ export default class PopupWithForm extends Popup {
   _handleSubmitForm(evt) {
     evt.preventDefault()
     this._handleFormSubmit(this._getInputValues())
-    this.close()
   }
 
   // перезаписать родительский метод и сбросить форму при закрытии popup

@@ -87,6 +87,9 @@ const popupWithFormEdit = new PopupWithForm({
           _id: res._id
         })
       })
+      .then(() => {
+        popupWithFormEdit.close()
+      })
       .catch(err => {
         console.log(`Ошибка: ${err}.`)
       })
@@ -105,6 +108,9 @@ const popupWithFormAvatar = new PopupWithForm({
         userInfo.setUserAvatar({
           avatar: res.avatar,
         })
+      })
+      .then(() => {
+        popupWithFormAvatar.close()
       })
       .catch(err => {
         console.log(`Ошибка: ${err}.`)
@@ -130,9 +136,14 @@ const popupWithFormAdd = new PopupWithForm({
           }
         }, placeSection)
         section.renderCard()
+        //section.addItem(createCard(res));
+        //section.renderCard()
+      })
+      .then(() => {
+        popupWithFormAdd.close()
       })
       .catch(err => {
-        console.log(`Не удалось загрузить карточки. Ошибка: ${err}.`)
+        console.log(`Не удалось загрузить карточку. Ошибка: ${err}.`)
       })
       .finally(loading(popupFormAdd, false))
   })
@@ -229,3 +240,24 @@ api.getInitialCards()
     }, placeSection)
     section.renderItems()
   })
+/*
+const section = new Section({
+  items: [],
+  renderer: (data) => {
+    createCard(data)
+    //const cardElement = createCard(data)
+    //section.addItem(cardElement)
+  }
+}, placeSection)
+//section.renderItems()
+*/
+/*
+const section = new Section({
+  items: [],
+  * ... *
+}, placeSection);
+
+* ... *
+
+section.addItem(createCard(res));
+*/
