@@ -50,8 +50,8 @@ export default class Card {
 
   // Навесить слушатели событий
   _setEventListeners() {
-    this._likedCard.addEventListener('click', (evt) => {
-      this._handleLikeIcon(evt);
+    this._likedCard.addEventListener('click', () => {
+      this._handleLikeIcon();
     });
 
     this._deletedCard.addEventListener('click', (evt) => {
@@ -66,13 +66,23 @@ export default class Card {
   // Добавить возможность ставить отметку "Нравится"
   _handleLikeIcon() {
     if (this._likedCard.classList.contains(this._likedCardActive)) {
-      this._handleCardLike('DELETE', this._id, this._likedCardCount)
-      this._likedCard.classList.remove(this._likedCardActive)
+      this._handleCardLike(this._id, this._likedCardCount)
     } else {
-      this._handleCardLike('PUT', this._id, this._likedCardCount)
-      this._likedCard.classList.add(this._likedCardActive)
+      this._handleCardLike(this._id, this._likedCardCount)
     }
   };
+
+  removeLike() {
+    this._likedCard.classList.remove(this._likedCardActive)
+  }
+
+  addLike() {
+    this._likedCard.classList.add(this._likedCardActive)
+  }
+
+  countLike(data) {
+    this._likedCardCount.textContent = data.likes.length
+  }
 
   // Добавить возможность удалять карточку
   _handleDeleteCard() {
@@ -90,3 +100,21 @@ export default class Card {
     })
   };
 };
+
+/*
+  _handleLikeIcon() {
+    if (this._likedCard.classList.contains(this._likedCardActive)) {
+      this._handleCardLike(this._id, this._likedCardCount)
+      //this._likedCardCount.textContent = this._likes.length -= 1
+      //this._likedCard.classList.remove(this._likedCardActive)
+    } else {
+      this._handleCardLike(this._id, this._likedCardCount)
+      //this._likedCardCount.textContent = this._likes.length += 1
+      //this._likedCard.classList.add(this._likedCardActive)
+    }
+  };
+
+
+
+    console.log(this._likedCardCount.textContent)
+*/

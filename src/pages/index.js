@@ -58,14 +58,26 @@ const createCard = (data) => {
     handleCardClick: (item) => {
       popupWithImage.open(item)
     },
-    handleCardLike: (method, id, likedCardCount) => {
-      api.likedCard(method, id)
-        .then(data => {
-          likedCardCount.textContent = data.likes.length
-        })
-        .catch(err => {
-          console.log(`Ошибка: ${err}.`)
-        })
+    handleCardLike: (id) => {
+      if (document.querySelector('.place-card__like').classList.contains('place-card__like_active')) {
+        api.deleteLikeCard(id)
+          .then((data) => {
+            card.removeLike()
+            card.countLike(data)
+          })
+          .catch(err => {
+            console.log(`Не удалось убрать отметку 'Мне нравится'. Ошибка: ${err}.`)
+          })
+      } else {
+        api.addLikeCard(id)
+          .then((data) => {
+            card.addLike()
+            card.countLike(data)
+          })
+          .catch(err => {
+            console.log(`Не удалось добавить отметку 'Мне нравится'. Ошибка: ${err}.`)
+          })
+      }
     }
   }, popupWithFormConfirm, userInfo.getUserInfo()._id)
   const cardElement = card.createCard()

@@ -68,16 +68,24 @@ export default class Api {
       .then(res => this._fixPromise(res))
   }
 
-  likedCard(method, id) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
-      method: method,
+  deleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
+      method: 'DELETE',
       headers: this._headers
     })
       .then(res => this._fixPromise(res))
   }
 
-  deleteCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
+  addLikeCard(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+      .then(res => this._fixPromise(res))
+  }
+
+  deleteLikeCard(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this._headers
     })
