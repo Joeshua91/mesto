@@ -1,7 +1,6 @@
 import './index.css';
 
 import {
-  initialCards,
   validSelector,
   popupFormAdd,
   popupFormEdit,
