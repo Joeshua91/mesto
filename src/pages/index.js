@@ -82,8 +82,7 @@ const createCard = (data) => {
     handleCardDelete: ({ item, id }) => {
       popupWithFormConfirm.open({ item, id })
     }
-  }, //popupWithFormConfirm,
-    userInfo.getUserInfo()._id)
+  }, userInfo.getUserInfo()._id)
   const cardElement = card.createCard()
   return cardElement
 }

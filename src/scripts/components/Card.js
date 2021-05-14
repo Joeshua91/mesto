@@ -1,7 +1,5 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick, handleCardLike, handleCardDelete },
-    //popupWithFormConfirm,
-    userInfo) {
+  constructor(data, cardSelector, { handleCardClick, handleCardLike, handleCardDelete }, userInfo) {
     this._link = data.link
     this._name = data.name
     this._id = data._id
@@ -21,7 +19,6 @@ export default class Card {
     this._likedCardActive = 'place-card__like_active'
     this._deletedCard = this._item.querySelector('.place-card__delete')
 
-    //this._popupWithFormConfirm = popupWithFormConfirm
     this._userId = userInfo
   }
 
@@ -88,16 +85,6 @@ export default class Card {
   countLike(data) {
     this._likedCardCount.textContent = data.likes.length
   }
-
-  // Добавить возможность удалять карточку
-  /*
-  _handleDeleteCard(popup) {
-    popup.open({
-      item: this._item,
-      id: this._id
-    })
-  };
-*/
 
   // Показать картинку из карточки
   _handlePreviewPicture() {
