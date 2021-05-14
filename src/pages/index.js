@@ -53,6 +53,13 @@ const userInfo = new UserInfo({
   userAvatarSelector: userAvatar
 })
 
+const section = new Section({
+  items: [],
+  renderer: (data) => {
+    section.addItem(createCard(data))
+  }
+}, placeSection)
+
 const createCard = (data) => {
   const card = new Card(data, placeTemplate, {
     handleCardClick: (item) => {
@@ -143,16 +150,7 @@ const popupWithFormAdd = new PopupWithForm({
       link: data['link-place']
     })
       .then(res => {
-        const section = new Section({
-          items: res,
-          renderer: (data) => {
-            const cardElement = createCard(data)
-            section.addItem(cardElement)
-          }
-        }, placeSection)
-        section.renderCard()
-        //section.addItem(createCard(res));
-        //section.renderCard()
+        section.addItem(createCard(res))
       })
       .then(() => {
         popupWithFormAdd.close()
@@ -217,62 +215,17 @@ buttonAvatar.addEventListener('click', () => {
   popupWithFormAvatar.open()
 })
 
-// получить данные с сервера
-api.getUserInfo()
-  .then(res => {
-    userInfo.setUserInfo(
-      {
-        name: res.name,
-        vocation: res.about,
-        _id: res._id,
-        avatar: res.avatar
-      })
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      vocation: userData.about,
+      _id: userData._id,
+      avatar: userData.avatar
+    })
+
+    section.renderItems(cards)
   })
   .catch(err => {
-    console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
+    console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
   })
-
-// получить данные карточек с сервера
-api.getInitialCards()
-  .then(res => {
-    const section = new Section({
-      items: res,
-      renderer: (data) => {
-        const cardElement = createCard(data)
-        section.addItem(cardElement)
-      }
-    }, placeSection)
-    section.renderItems()
-  })
-  .catch(err => {
-    console.log(`Данные карточек с сервера не получены. Ошибка: ${err}. Карточки загружены по умолчанию`)
-    const section = new Section({
-      items: initialCards,
-      renderer: (data) => {
-        const cardElement = createCard(data)
-        section.addItem(cardElement)
-      }
-    }, placeSection)
-    section.renderItems()
-  })
-/*
-const section = new Section({
-  items: [],
-  renderer: (data) => {
-    createCard(data)
-    //const cardElement = createCard(data)
-    //section.addItem(cardElement)
-  }
-}, placeSection)
-//section.renderItems()
-*/
-/*
-const section = new Section({
-  items: [],
-  * ... *
-}, placeSection);
-
-* ... *
-
-section.addItem(createCard(res));
-*/

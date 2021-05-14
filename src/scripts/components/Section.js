@@ -5,13 +5,9 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderCard() {
-    this._renderer(this._renderedItems)
-  }
-
   // отрисовать каждый отдельный элемент
-  renderItems() {
-    this._renderedItems.reverse().forEach(item => {
+  renderItems(items) {
+    items.reverse().forEach(item => {
       this._renderer(item);
     });
   }
