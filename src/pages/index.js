@@ -78,8 +78,12 @@ const createCard = (data) => {
             console.log(`Не удалось добавить отметку 'Мне нравится'. Ошибка: ${err}.`)
           })
       }
+    },
+    handleCardDelete: ({ item, id }) => {
+      popupWithFormConfirm.open({ item, id })
     }
-  }, popupWithFormConfirm, userInfo.getUserInfo()._id)
+  }, //popupWithFormConfirm,
+    userInfo.getUserInfo()._id)
   const cardElement = card.createCard()
   return cardElement
 }

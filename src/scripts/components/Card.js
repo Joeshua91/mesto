@@ -1,6 +1,7 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick, handleCardLike },
-    popupWithFormConfirm, userInfo) {
+  constructor(data, cardSelector, { handleCardClick, handleCardLike, handleCardDelete },
+    //popupWithFormConfirm,
+    userInfo) {
     this._link = data.link
     this._name = data.name
     this._id = data._id
@@ -10,6 +11,7 @@ export default class Card {
     this._cardSelector = cardSelector
     this._handleCardClick = handleCardClick
     this._handleCardLike = handleCardLike
+    this._handleCardDelete = handleCardDelete
 
     this._item = this._getTemplate()
     this._placedImage = this._item.querySelector('.place-card__image')
@@ -19,7 +21,7 @@ export default class Card {
     this._likedCardActive = 'place-card__like_active'
     this._deletedCard = this._item.querySelector('.place-card__delete')
 
-    this._popupWithFormConfirm = popupWithFormConfirm
+    //this._popupWithFormConfirm = popupWithFormConfirm
     this._userId = userInfo
   }
 
@@ -54,8 +56,11 @@ export default class Card {
       this._handleLikeIcon();
     });
 
-    this._deletedCard.addEventListener('click', (evt) => {
-      this._handleDeleteCard(evt);
+    this._deletedCard.addEventListener('click', () => {
+      this._handleCardDelete({
+        item: this._item,
+        id: this._id
+      });
     });
 
     this._placedImage.addEventListener('click', () => {
@@ -85,12 +90,14 @@ export default class Card {
   }
 
   // Добавить возможность удалять карточку
-  _handleDeleteCard() {
-    this._popupWithFormConfirm.open({
+  /*
+  _handleDeleteCard(popup) {
+    popup.open({
       item: this._item,
       id: this._id
     })
   };
+*/
 
   // Показать картинку из карточки
   _handlePreviewPicture() {
@@ -100,21 +107,3 @@ export default class Card {
     })
   };
 };
-
-/*
-  _handleLikeIcon() {
-    if (this._likedCard.classList.contains(this._likedCardActive)) {
-      this._handleCardLike(this._id, this._likedCardCount)
-      //this._likedCardCount.textContent = this._likes.length -= 1
-      //this._likedCard.classList.remove(this._likedCardActive)
-    } else {
-      this._handleCardLike(this._id, this._likedCardCount)
-      //this._likedCardCount.textContent = this._likes.length += 1
-      //this._likedCard.classList.add(this._likedCardActive)
-    }
-  };
-
-
-
-    console.log(this._likedCardCount.textContent)
-*/
