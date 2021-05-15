@@ -74,6 +74,10 @@ export default class Card {
     }
   };
 
+  isLiked() {
+    return this._likedCard.classList.contains(this._likedCardActive)
+  }
+
   removeLike() {
     this._likedCard.classList.remove(this._likedCardActive)
   }

@@ -65,7 +65,7 @@ const createCard = (data) => {
       popupWithImage.open(item)
     },
     handleCardLike: (id) => {
-      if (document.querySelector('.place-card__like').classList.contains('place-card__like_active')) {
+      if (card.isLiked()) {
         api.deleteLikeCard(id)
           .then((data) => {
             card.removeLike()
