@@ -24,4 +24,4 @@
 * JavaScript и работа с DOM-деревом.
 
 ------
-[проект на gh-pages](https://joeshua91.github.io/mesto/index.html)
+[проект на gh-pages](https://mkdir-dev.github.io/mesto/)
